@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+ 
+	<head>
+    	<title>Main Menu</title>
+		
+			<meta charset="utf-8">
+    		<meta http-equiv="x-ua-compatible" content="ie=edge">
+    		<meta name="viewport" content="width=device-width, initial-scale=1">
+    	
+			<!-- Bootstrap core CSS-->
+      		<link th:href="@{/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+           
+      
+      		<!-- Font Awesome-->
+      		<link th:href="@{/vendor/fontawesome/css/all.min.css}" rel="stylesheet">
+      
+      		<!-- Font Awesome-->
+      		<link th:href="@{/vendor/icofont/icofont.min.css}" rel="stylesheet">
+      
+      		<!-- Select2 CSS-->
+      		<link th:href="@{/vendor/select2/css/select2.min.css}" rel="stylesheet">
+      
+      		<!-- Custom styles for this template-->
+      		<link th:href="@{/css/osahan.css}" rel="stylesheet">
+  			<link th:href="@{/css/style.css}" rel="stylesheet">  		
+    	
+	</head>
+ 
+	<body>
+    	<div class="container my-2">
+    		<div class="wrapper d-flex align-items-stretch">
+				<nav id="sidebar">
+					<div class="p-4 pt-5">
+					
+						<figure th:if="${store.logo==''}">
+							<img class="img logo rounded-circle mb-5" th:src="@{/images/logos/generalStoreLogo.png}">
+						</figure>
+						
+						<figure th:if="${store.logo!=''}">
+							<img class="img-circle"  th:src="@{${'/pbb/clients/'+ store.clientid +'/logo/'+ store.logo}}">
+						</figure>
+						
+						<div class="footer">
+	        				<div style="color:#000088;font-size:15px;font-weight:bold;text-align:center;" class="card-footer text-muted" th:text="${store.businessName}">Company Name</div>
+	        			</div>
+						
+						<label class="labelNotice" th:text="'Days left in subscription : '+ ${daysLeftSubscription}"></label>
+												
+						<div class="warningFrame" th:if="${store.subsFullPayment=='Yes'}">
+						
+	        				<ul class="list-unstyled components mb-5">
+	          				
+	          					<li>
+	              					<a th:href="@{/pbb/clients/ModifyProfile/{id}(id=${store.clientid})}">Profile</a>
+	          					</li>
+		          				<li>
+	              					<a th:href="@{/pbb/clients/StoresUpload/{id}(id=${store.clientid})}">Logo</a>
+		          				</li>
+		          				<li>
+	              					<a th:href="@{/pbb/clients/StoresPicsView/{id}(id=${store.clientid})}">Products</a>
+		          				</li>
+		          				<li>
+	              					<a th:href="@{/pbb/clients/StoresPaymentsView/{id}(id=${store.clientid})}">Payments</a>
+		          				</li>
+		          				<li>
+	              					<a th:href="@{/pbb/clients/ChangePass/{id}(id=${store.clientid})}">Change Password</a>
+		          				</li>
+		          				<li>
+	              					<a href="/pbb/clients/ExitMainMenu">Exit</a>
+		          				</li>
+	        				</ul>
+						
+						</div>
+						
+	        			
+
+	      			</div>
+    			</nav>
+    	
+    			<!-- Page Content  -->
+      			<div id="content" class="p-4 p-md-5">
+      			
+      				
+      				<div class="noticeFrame" th:if="${store.subsFullPayment=='No'} or ${daysLeftSubscription=='Expired'}">
+      				
+      					<label class="label">Your subscription had expired or need to be renewed...<br>
+      					To proceed with your payment please press on the link : </label>
+      					<a th:href="@{/pbb/payments/charge/{id}(id=${store.clientid})}">Pay now</a>
+      				
+      				</div>
+      				
+      				<div class="noticeFrame" th:if="${store.subsFullPayment=='Yes'}">      				
+      			
+      					<div class="infoFrame" th:if="${store.status=='Due'}">
+      				
+	      					<label class="label" th:text="${entityMessage.sentence1}"></label><br>
+	      					<label class="label"th:text="${entityMessage.text1}"></label><br>
+	      					
+	      					<a th:href="@{/pbb/clients/Publish/{id}(id=${store.clientid})}">
+	      						<label class="linkFrame"  th:text="${entityMessage.sentence3}"></label>
+	      					</a>
+      				 
+      					</div>
+      				
+      					<div class="infoFrame" th:if="${store.status=='Public'}">
+      				
+      							<label class="label" th:text="${entityMessage.sentence2}"></label><br>
+      							<label class="label" th:text="${entityMessage.text2}"></label><br>
+      						      						
+      						<a th:href="@{/pbb/clients/Unpublish/{id}(id=${store.clientid})}">
+      							<label class="linkFrame" th:text="${entityMessage.sentence4}"></label>
+      						</a>
+      				
+      					</div>
+      			
+	      				<p>&nbsp;</p>
+	      				<p><b>Client ID : </b><label th:text="${store.clientid}"></label></p>
+	      				<p><b>Subscription Number : </b><label th:text="${store.subscriptionNum}"></label></p>
+	      				<p><b>Store : </b><label th:text="${store.businessName}"></label></p>
+	      				<p><b>Email : </b><label th:text="${store.email}"></label></p>
+	      				<p><b>Phone(s) : </b><label th:text="${store.phone}"></label></p>
+	      				<p><b>Address : </b><label th:text="${store.address}"></label></p>
+	      				<p><b>City : </b><label th:text="${store.city}"></label></p>
+	      				<p><b>State : </b><label th:text="${store.state}"></label></p>
+	      				<p><b>Zip Code : </b><label th:text="${store.zip}"></label></p>
+	      				<p>---------------------------------------------------------</p>
+	      				<p><b>Contact Person/Owner : </b><label th:text="${store.cname}"></label></p>
+	      				<p><b>Business Description : </b><label th:text="${store.bizDescription}"></label></p>
+	      				<p>---------------------------------------------------------</p>
+	      				
+	      				<p><b>Subscription Status : </b><label th:text="${store.status}"></label></p>
+	      				
+    				</div>
+    		
+    			</div>
+        		
+        	</div>
+        </div>
+        
+         <!-- jQuery -->
+      <script th:src="@{/vendor/jquery/jquery-3.3.1.slim.min.js}"></script>
+      
+      <!-- Bootstrap core JavaScript-->
+      <script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+      
+      <!-- Select2 JavaScript-->
+      <script th:src="@{/vendor/select2/js/select2.min.js}"></script>
+      
+      <!-- Owl Carousel -->
+      <script th:src="@{/vendor/owl-carousel/owl.carousel.js}"></script>
+      
+      <!-- Custom scripts for all pages-->
+      <script th:src="@{/js/custom.js}"></script>
+        
+           
+	</body>
+ 
+</html>

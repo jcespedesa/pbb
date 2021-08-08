@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+ 
+	<head>
+    	<title>Add/Modify Subscriptions</title>
+		
+			<meta charset="utf-8">
+    		<meta http-equiv="x-ua-compatible" content="ie=edge">
+    		<meta name="viewport" content="width=device-width, initial-scale=1">
+    	
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
+  			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+					
+  			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+			<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+  			<link th:href="@{/css/style.css}" rel="stylesheet">
+    	
+	</head>
+ 
+	<body>
+    	<div class="container my-5">
+        	<font style="color: #006400; font-size=12px; font-weight:bold;"> Add/Modify the Subscriptions List</font>
+        	<div class="card">
+        	   	<div class="card-body bg-form">
+                	<form action="#" th:action="@{/pbb/subscriptions/createSubscription}" th:object="${subscription}" method="post">
+                		
+                       		<div class="form-group col-sm-4">
+                          		<label for="subscriptionNum">Number<sup>*</sup></label> 
+                          		
+                               		<input type="text" th:field="*{subscriptionNum}"
+                                            id="subscriptionNum" placeholder="" required maxlength="6"/>
+                                            
+                        	</div>
+                        	
+ 							<div class="form-group col-sm-4">
+                          		<label for="subscription">Subscription Label<sup>*</sup></label> 
+                          		
+                               		<input type="text" th:field="*{subscription}"
+                                            id="subscription" placeholder="Subscription Label" required maxlength="100" size="115"/>
+                                            
+                        	</div>
+                        	
+                        	<div class="form-group col-sm-4">
+                          		<label for="amount">Price ($)<sup>*</sup></label> 
+                          		
+                               		<input type="text" th:field="*{amount}"
+                                            id="amount" placeholder="Price" required maxlength="6"/>
+                                            
+                        	</div>
+                        	
+                        	<div class="form-group col-sm-4">
+                          		<label for="udelnyBes">Form Order<sup>*</sup></label> 
+                          		
+                               		<input type="text" th:field="*{udelnyBes}"
+                                            id="udelnyBes" placeholder="" required maxlength="2"/>
+                                            
+                        	</div>
+                        	
+                        	<div class="form-group col-md-8">
+      							<label for="active">Active</label>
+      							<select th:field="*{active}">
+      								<option th:value="*{active}" th:text="*{active}"></option>
+    								<option th:value="'Yes'" th:text="Yes"></option>
+    								<option th:value="'No'" th:text="No"></option>
+								</select>
+    						</div>
+                            
+                            <div class="form-group col-md-8">
+                               	<input type="submit" class="btn btn-primary btn-sm" value=" Submit ">
+                               	<a href="/pbb/subscriptions/list" class="btn btn-secondary btn-sm">
+                					<i class="fas fa-back ml-2"> Cancel </i></a>
+                            </div>
+ 
+                            <input type="hidden" id="id" th:field="*{subscriptionid}">
+     
+                        
+                    </form>
+                    
+                </div>
+            </div>
+           <div style="color:#000088; font-size:10px;font-weight: bold;" class="card-footer text-muted">TRC Corp</div>
+        </div>
+    
+	</body>
+ 
+</html>

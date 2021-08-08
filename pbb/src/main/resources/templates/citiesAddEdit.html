@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+ 
+	<head>
+    	<title>Add/Modify Cities</title>
+		
+			<meta charset="utf-8">
+    		<meta http-equiv="x-ua-compatible" content="ie=edge">
+    		<meta name="viewport" content="width=device-width, initial-scale=1">
+    	
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
+  			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+					
+  			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+			<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+  			<link th:href="@{/css/style.css}" rel="stylesheet">
+    	
+	</head>
+ 
+	<body>
+    	<div class="container my-5">
+        	<font style="color: #006400; font-size=12px; font-weight:bold;"> Add/Modify Cities</font>
+        	<div class="card">
+        	   	<div class="card-body bg-form">
+                	<form action="#" th:action="@{/pbb/cities/createCity}" th:object="${city}" method="post">
+                		
+                       		<div class="form-group col-sm-4">
+                          		<label for="city">City<sup>*</sup></label> 
+                          		
+                               		<input type="text" th:field="*{city}"
+                                            id="city" placeholder="city" required maxlength="25"/>
+                                            
+                        	</div>
+                        	
+ 							<div class="form-group col-sm-4">
+                          		<label for="state">State<sup>*</sup></label> 
+                          		
+                               		<input type="text" th:field="*{state}"
+                                            id="state" placeholder="state" required maxlength="2"/>
+                                            
+                        	</div>
+                        	
+                        	<div class="form-group col-sm-4">
+                          		<label for="county">County</label> 
+                          		
+                               		<input type="text" th:field="*{county}"
+                                            id="county" placeholder="county" maxlength="25"/>
+                                            
+                        	</div>
+ 
+                            <div class="form-group col-md-8">
+                               	<input type="submit" class="btn btn-primary btn-sm" value=" Submit ">
+                               	<a href="/pbb/cities/list" class="btn btn-secondary btn-sm">
+                					<i class="fas fa-back ml-2"> Cancel </i></a>
+                            </div>
+ 
+                            <input type="hidden" id="id" th:field="*{city_id}">
+     
+                        
+                    </form>
+                    
+                </div>
+            </div>
+           <div style="color:#000088; font-size:10px;font-weight: bold;" class="card-footer text-muted">TRC Corp</div>
+        </div>
+    
+	</body>
+ 
+</html>

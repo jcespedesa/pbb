@@ -1,0 +1,149 @@
+ <!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+ 
+	<head>
+    	<title>Main Menu</title>
+		
+			<meta charset="utf-8">
+    		<meta http-equiv="x-ua-compatible" content="ie=edge">
+    		<meta name="viewport" content="width=device-width, initial-scale=1">
+    	
+			<!-- Bootstrap core CSS-->
+      		<link th:href="@{/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+           
+      
+      		<!-- Font Awesome-->
+      		<link th:href="@{/vendor/fontawesome/css/all.min.css}" rel="stylesheet">
+      
+      		<!-- Font Awesome-->
+      		<link th:href="@{/vendor/icofont/icofont.min.css}" rel="stylesheet">
+      
+      		<!-- Select2 CSS-->
+      		<link th:href="@{/vendor/select2/css/select2.min.css}" rel="stylesheet">
+      
+      		<!-- Custom styles for this template-->
+      		<link th:href="@{/css/osahan.css}" rel="stylesheet">
+  			<link th:href="@{/css/style.css}" rel="stylesheet">  		
+    	
+	</head>
+ 
+	<body>
+    	<div class="container my-2">
+    		<div class="wrapper d-flex align-items-stretch">
+				<nav id="sidebar">
+					<div class="p-4 pt-5">
+					
+						<figure th:if="${store.logo==''}">
+							<img class="img logo rounded-circle mb-5" th:src="@{/images/logos/generalStoreLogo.png}" width="100" height="120">
+						</figure>
+						
+						<figure th:if="${store.logo!=''}">
+							<img class="img-circle" th:src="@{${'/pbb/clients/'+ store.clientid +'/logo/'+ store.logo}}" width="100" height="120">
+						</figure>
+						
+	        			<ul class="list-unstyled components mb-5">
+	          				
+	          				<li>
+	              				<a th:href="@{/pbb/ClientsMenu/{email}(email=${store.email})}">Back</a>
+	          				</li>
+	          				
+	        			</ul>
+
+	        			<div class="footer">
+	        				<div style="color:#000088; font-size:14px;font-weight: bold;" class="card-footer text-muted" th:text="${store.businessName}">Company Name</div>
+	        			</div>
+
+	      			</div>
+    			</nav>
+    	
+    			<!-- Page Content  -->
+      			<div id="content" class="col">
+      				<div class="row">
+      			
+	      				<div th:each="product,iStat : ${products}"> 
+	      				   					
+	    					<div class="col-sm" style="padding:50px;border:1px solid #000088;">
+	    					
+	    						<label style="color:#006400;font-size:15px" th:text="${product.condition}"></label><br>
+	  							<a target="_blank" href="#">
+	    							<img th:src="@{${'/pbb/clients/'+ product.storeId +'/images/'+ product.fileName}}" style="width:250px;height:230px;border:2px solid">
+	  							</a>
+	  								
+	  							<div class="row">
+	  							
+	  								<div class="desc">
+	  									<label style="color: #880000;" th:text="${product.product}"></label><br>
+	  								</div>
+	  									
+	  							</div>	
+	  									
+	  							<div class="row">
+	  								
+	  								<div class="column">
+	  									<div class="desc">
+	  										<b>$</b><label style="color: #006400;" th:text="${product.price}"></label><br>
+		      								<label style="color: #006400;" th:text="${product.status}"></label><br>	
+		      							</div>
+		      								
+	                				</div>
+	  									  									
+	  								<div class="column">
+	  									<div class="desc">
+	  										<label style="color: #006400;" th:text="${product.delivery}"></label><br>
+	  									</div>
+	  									
+	  								</div>
+	  								
+	  								<div class="column">
+	  									<div class="desc">
+	  										<b>Category : </b>
+	  										<label style="color: #006400;" th:text="${product.category}"></label><br>
+	  									</div>
+	  									
+	  								</div>
+	  									
+	  							</div>	
+	  									
+	  							<div class="row">
+	  									
+	  								<div class="col">
+	  									<a th:href="@{/pbb/clients/ProductEdit/{productId}/{storeId} (productId=${product.productid},storeId=${store.clientid})}" class="btn btn-warning btn-sm">
+		      								<i class="fas fa-back ml-2">Edit</i>
+		                				</a>
+		                			</div>
+		                			<div class="col">
+	  									<a th:href="@{/pbb/clients/PictureUpload/{productId}/{storeId} (productId=${product.productid},storeId=${store.clientid})}" class="btn btn-warning btn-sm">
+		      								<i class="fas fa-back ml-2" style="white-space: nowrap;">Upload/Replace Picture</i>
+		                				</a>
+		                			</div>
+	  							</div>
+							</div>
+							<div class="row"></div>	  
+	    				</div>
+    				</div>          		     
+       			</div>
+      				
+    		</div>
+    	
+        		
+        </div>
+                
+         <!-- jQuery -->
+      <script th:src="@{/vendor/jquery/jquery-3.3.1.slim.min.js}"></script>
+      
+      <!-- Bootstrap core JavaScript-->
+      <script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+      
+      <!-- Select2 JavaScript-->
+      <script th:src="@{/vendor/select2/js/select2.min.js}"></script>
+      
+      <!-- Owl Carousel -->
+      <script th:src="@{/vendor/owl-carousel/owl.carousel.js}"></script>
+      
+      <!-- Custom scripts for all pages-->
+      <script th:src="@{/js/custom.js}"></script>
+        
+           
+	</body>
+ 
+</html>

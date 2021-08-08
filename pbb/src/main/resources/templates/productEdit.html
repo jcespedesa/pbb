@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+ 
+	<head>
+    	<title>Edit Product</title>
+		
+			<meta charset="utf-8">
+    		<meta http-equiv="x-ua-compatible" content="ie=edge">
+    		<meta name="viewport" content="width=device-width, initial-scale=1">
+    	
+			<!-- Bootstrap core CSS-->
+      		<link th:href="@{/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+           
+      
+      		<!-- Font Awesome-->
+      		<link th:href="@{/vendor/fontawesome/css/all.min.css}" rel="stylesheet">
+      
+      		<!-- Font Awesome-->
+      		<link th:href="@{/vendor/icofont/icofont.min.css}" rel="stylesheet">
+      
+      		<!-- Select2 CSS-->
+      		<link th:href="@{/vendor/select2/css/select2.min.css}" rel="stylesheet">
+      
+      		<!-- Custom styles for this template-->
+      		<link th:href="@{/css/osahan.css}" rel="stylesheet">
+  			<link th:href="@{/css/style.css}" rel="stylesheet">  		
+    	
+	</head>
+ 
+	<body>
+    	<div class="container my-2">
+    		<div class="wrapper d-flex align-items-stretch">
+				<nav id="sidebar">
+					<div class="p-4 pt-5">
+					
+						<figure th:if="${store.logo==''}">
+							<img class="img logo rounded-circle mb-5" th:src="@{/images/logos/generalStoreLogo.png}" width="100" height="120">
+						</figure>
+						
+						<figure th:if="${store.logo!=''}">
+							<img class="img logo rounded-circle mb-5" th:src="@{${'/pbb/clients/'+ store.clientid +'/logo/'+ store.logo}}" width="100" height="120">
+						</figure>
+						
+	        			<ul class="list-unstyled components mb-5">
+	          				
+	          				<li>
+	              				<a th:href="@{/pbb/clients/StoresPicsView/{id}(id=${store.clientid})}">Back</a>
+	          				</li>
+	          				
+	        			</ul>
+
+	        			<div class="footer">
+	        				<div style="color:#000088; font-size:10px;font-weight: bold;" class="card-footer text-muted" th:text="${store.businessName}">Company Name</div>
+	        			</div>
+
+	      			</div>
+    			</nav>
+    	
+    			<!-- Page Content  -->
+      			<div id="content" class="col-sm-12" >
+      			
+      				<div class="gallery-big">
+  					
+  						<form th:action="@{/pbb/clients/StoreUpdate}" th:object="${product}" method="post">
+  					
+  							<div class="form-group">
+                          		<label for="productId">Product ID :</label> 
+                          		<input type="text" size="6" th:value="${product.productid}" disabled/>
+                            </div>
+                            
+                            <div class="form-group">
+                          		<label for="productId">Store ID :</label> 
+                          		<input type="text" size="6" th:value="${product.storeId}" disabled/>
+                            </div>	
+  					
+  							<div class="form-group">
+                          		<label for="product">Description :<sup>*</sup></label> 
+                          		<input type="text" th:field="*{product}" id="product" required maxlength="50" size="50"/>
+                            </div>	
+  							<div class="form-group">
+                          		<label for="price">Price : $<sup>*</sup></label> 
+                          		<input type="number" th:field="*{price}" id="price" required maxlength="6" size="10" min="0.01" step="0.01"/>
+                          	</div>
+                          	<div class="form-group">
+      							<label for="status">Status : </label>
+      							<select th:field="*{status}">
+      								<option th:value="*{status}" th:text="*{status}"></option>
+    								<option value="On Sale Now">On Sale Now</option>
+    								<option value="Sold out">Sold Out</option>
+    								<option value="Coming back soon">Coming Back Soon</option>
+								</select>
+							</div>
+    						
+    						<div class="form-group">
+      							<label for="condition">Condition :</label>
+      							<select th:field="*{condition}">
+      								<option th:value="*{condition}" th:text="*{condition}"></option>
+    								<option value="New">New</option>
+    								<option value="Used">Used</option>
+    							</select>
+    						</div>
+    						
+    						<div class="form-group">
+      							<label for="delivery">Delivery Method :</label>
+      							<select th:field="*{delivery}">
+      								<option th:value="*{delivery}" th:text="*{delivery}"></option>
+    								<option value="Shipping">Shipping</option>
+    								<option value="Pickup">Pickup</option>
+    							</select>
+    						</div>
+    						
+    						<div class="form-group">
+      							<label for="categoryNum">Category :</label>
+      							<select th:field="*{categoryNum}" required>
+      								<option th:value="*{categoryNum}" th:text="*{categoryNum}"></option>
+    								<option th:each="list : ${categories}" th:value="${list.categoryNum}" th:text="${list.categoryName}"></option>
+    							</select>
+    						</div>
+    						
+    						<input type="submit" class="btn btn-warning btn-sm" value=" Update ">
+    							
+    						<input type="hidden" name="productId" th:value="${product.productid}">
+     						<input type="hidden" name="storeId" th:value="${product.storeId}">
+    							
+    							
+  						</form>		
+					</div>
+					
+      				<div class="gallery-small">
+  						<p>
+    						<img th:src="@{${'/pbb/clients/'+ product.storeId +'/images/'+ product.fileName}}" style="width:200px;height:200px;">
+  						</p>
+  						<form method="POST" th:action="@{/pbb/clients/UploadProductPic}" enctype="multipart/form-data">
+			    			<input class="btn btn-primary btn-sm" type="file" name="file"/> <br/><br/>
+			    			<input type="hidden" name="storeId" th:value="${product.storeId}">
+			    			<input type="hidden" name="productId" th:value="${product.productid}">
+			    			<button class="btn btn-warning btn-sm" type="submit">Replace this picture</button>
+  						</form>
+					</div>
+      				
+      				
+      				
+    			</div>
+    		</div>
+        		
+        </div>
+                
+         <!-- jQuery -->
+      <script th:src="@{/vendor/jquery/jquery-3.3.1.slim.min.js}"></script>
+      
+      <!-- Bootstrap core JavaScript-->
+      <script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+      
+      <!-- Select2 JavaScript-->
+      <script th:src="@{/vendor/select2/js/select2.min.js}"></script>
+      
+      <!-- Owl Carousel -->
+      <script th:src="@{/vendor/owl-carousel/owl.carousel.js}"></script>
+      
+      <!-- Custom scripts for all pages-->
+      <script th:src="@{/js/custom.js}"></script>
+        
+           
+	</body>
+ 
+</html>

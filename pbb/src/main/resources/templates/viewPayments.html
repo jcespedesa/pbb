@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+ 
+	<head>
+    	<title>View Payments</title>
+		
+			<meta charset="utf-8">
+    		<meta name="viewport" content="width=device-width, initial-scale=1">
+    	
+    		<script th:src="@{/js/jquery-3.4.1.min.js}"></script>
+			<script th:src="@{/js/bootstrap-4.0.0.min.js}"></script>
+  			<script th:src="@{/js/calendarControl.js}"></script>
+							
+  			<link th:href="@{/css/bootstrap-4.0.0.min.css}" rel="stylesheet">
+			<link th:href="@{/css/style.css}" rel="stylesheet">
+			<link th:href="@{/css/calendarControl.css}" rel="stylesheet">
+  
+	</head>
+ 
+	<body>
+    	<div class="container my-5">
+        	        	
+        	<a href="/pbb/reports/viewPaymentsSel" class="btn btn-info btn-sm">
+                <i class="fas fa-back ml-2">Back</i>
+            </a>
+            <a href="/pbb/MainMenu" class="btn btn-success btn-sm">
+                <i class="fas fa-back ml-2">Back to Main Menu</i>
+            </a>
+            
+        	<div class="card">
+				<div class="card-body">
+                	<section class="page-section" id="mainBody">
+    					  					
+      					<div class="row">
+        					<div class="col-lg-4 text-center">
+				        		<label th:text="'Initial Date : '+ ${initialDate}" style="color:teal;font-weight:bold;"></label>
+				        		<label th:text="'Final Date : '+ ${finalDate}" style="color:teal;font-weight:bold;"></label>
+        					</div>
+      					</div>
+     			     		<div class="row">
+     			     			<table class="table table-striped table-responsive-sm">
+     			     			
+     			     				<thead>
+     			     					<tr><th style="color: #880000" colspan="6"><b>Payments View</b></th></tr>
+                        				<tr>
+                        					<th style="color:teal;">#</th>
+                            				<th style="color:#006600;">Date</th>
+		                                	<th style="color:#006600;">Client ID</th>
+		                                	<th style="color:#006600;">Type</th>
+		                                	<th style="color:#006600;">Amount</th>
+		                                	<th style="color:#006600;">Charge ID</th>
+		                                	<th style="color:#006600;">Stripe Result</th>
+		                                	
+                            			</tr>
+                        			</thead>
+                        			<tbody>
+     			     			
+     			     					<tr th:each="payment,iStat : ${payments}">
+     			     					
+     			     						<td th:text="${iStat.count}"></td>
+     			     						<td th:text="${payment.dateCreation}"></td>
+	     			     					<td th:text="${payment.clientId}"></td>
+	     			     					<td th:text="${payment.type}"></td>
+	     			     					<td th:text="'$ '+ ${payment.amount}"></td>
+	     			     					<td th:text="${payment.chargeId}"></td>
+	     			     					
+	     			     					<td th:if="${payment.outcome}=='Thanks! Your payment was successful...'">OK</td>
+	     			     					
+	     			     					<td th:unless="${payment.outcome}=='Thanks! Your payment was successful...'" th:text="${payment.outcome}">
+	     			     					</td>
+	     			     						
+     			     					</tr>
+     			     					<tr>
+     			     						<td colspan="7" style="font-color:teal;font-weight:bold;" th:text="'Total Payments in this period: '+ ${totalPayments}"></td>
+     			     					</tr>	
+     			     				</tbody>		      
+     			     			</table>
+     			     			
+        					</div>
+        				
+  					</section>
+  					
+  					<a href="/pbb/reports/viewPaymentsSel" class="btn btn-info btn-sm">
+                		<i class="fas fa-back ml-2">Back</i>
+            		</a>
+  					
+  					<div th:text="${message}"></div>
+                	                    
+                </div>
+            </div>
+           	<div style="color:#000088; font-size:10px;font-weight: bold;" class="card-footer text-muted">TRC Corp</div>
+         </div>   
+	</body>
+ 
+</html>

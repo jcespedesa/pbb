@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+ 
+	<head>
+    	<title>Add/Modify Settings</title>
+		
+			<meta charset="utf-8">
+    		<meta http-equiv="x-ua-compatible" content="ie=edge">
+    		<meta name="viewport" content="width=device-width, initial-scale=1">
+    	
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
+  			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+					
+  			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+			<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+  			<link th:href="@{/css/style.css}" rel="stylesheet">
+    	
+	</head>
+ 
+	<body>
+    	<div class="container my-5">
+        	<font style="color: #006400; font-size=12px; font-weight:bold;"> Add/Modify Settings</font>
+        	<div class="card">
+        	
+            	<div class="card-body bg-form">
+                	<div class="col-md-10">
+                    	<form action="#" th:action="@{/pbb/Settings/createSetting}" th:object="${setting}" method="post">
+                        	<div class="row">
+                        		<div class="form-group col-md-8">
+                       				<label>ID: </label> 
+                       				<input type="text" th:field="*{settingid}" size="3" readOnly disabled/>
+                       			</div>
+                            	<div class="form-group col-md-8">
+                                	<label for="Sname" class="col-form-label">Name<sup>*</sup></label> 
+                                	<input type="text" th:field="*{sname}" class="form-control"
+                                            id="sname" placeholder="Name" required maxlength="50"/>
+                            	</div>
+                            	<div class="form-group col-md-10">
+                                	<label for="path" class="col-form-label">Path<sup>*</sup></label> 
+                                	<input type="text" th:field="*{path}" class="form-control"
+                                            id="path" placeholder="Path" required maxlength="120"/>
+                            	</div>
+                            	<div class="form-group col-md-10">
+                                	<label for="param1" class="col-form-label">Param 1</label> 
+                                	<input type="text" th:field="*{param1}" class="form-control"
+                                            id="param1" placeholder="" maxlength="120"/>
+                            	</div>
+                            	<div class="form-group col-md-10">
+                                	<label for="param2" class="col-form-label">Param 2</label> 
+                                	<input type="text" th:field="*{param2}" class="form-control"
+                                            id="param2" placeholder="" maxlength="120"/>
+                            	</div>
+                            	
+                            	<div class="form-group col-md-10">
+                                	<label for="param3" class="col-form-label">Param 3</label> 
+                                	<input type="text" th:field="*{param3}" class="form-control"
+                                            id="param3" placeholder="" maxlength="120"/>
+                            	</div>
+                            	
+                            	<div class="form-group col-md-10">
+                                	<label for="param4" class="col-form-label">Param 4</label> 
+                                	<input type="text" th:field="*{param4}" class="form-control"
+                                            id="param4" placeholder="" maxlength="120"/>
+                            	</div>
+                            	 
+                            	<div class="col-md-6">
+                                	<input type="submit" class="btn btn-primary btn-sm" value=" Submit ">
+                                	<a href="/pbb/Settings/list" class="btn btn-secondary btn-sm">
+                					<i class="fas fa-back ml-2"> Cancel </i></a>
+                            	</div>
+ 
+                            	<input type="hidden" id="id" th:field="*{settingid}">
+     
+                        	</div>
+                    	</form>
+                    
+                	</div>
+            	</div>
+            	<div style="color:#000088; font-size:10px;font-weight: bold;" class="card-footer text-muted">TRC Corp</div>
+        	</div>
+    	</div>
+	</body>
+ 
+</html>

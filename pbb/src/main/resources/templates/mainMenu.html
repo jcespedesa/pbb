@@ -1,0 +1,116 @@
+ <!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+ 
+	<head>
+	
+		<title>Main Menu</title>
+		
+    	<meta charset="utf-8">
+    	<meta http-equiv="x-ua-compatible" content="ie=edge">
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
+    	
+    	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+  		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  		  			    	
+    	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+		<link th:href="@{/css/style.css}" rel="stylesheet">
+    	
+	</head>
+ 
+	<body>
+    	<div class="container my-2">
+    		<div class="card">
+    			<div class="card-body">
+    				<span th:text="${username}"></span>
+    				<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  						<div class="navbar-brand" style="color:#880000;font-size:15px;font-weight:bold;background-color:##839192;">PBB Control Panel</div>
+  						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    						<span class="navbar-toggler-icon"></span>
+  						</button>
+  						<div class="collapse navbar-collapse" id="navbarNav">
+    						<ul class="navbar-nav">
+    						
+    							<li class="nav-item">
+    								<div class="dropdown">
+    									<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Main<span class="caret"></span></button>
+    									<ul class="dropdown-menu">
+      										<li><a href="/pbb/clients/selectClients">Clients</a></li>	
+      										<li><a href="/pbb/messages/list">Messages</a></li>
+      										<li th:if="${username}=='root'"><a href="/pbb/users/list">Users</a></li>
+      										<li th:if="${username}=='root'"><a href="/pbb/tools/list">Tools</a></li>
+    									</ul>
+  									</div>
+  								</li>	
+    						
+    							<li class="nav-item">
+    								<div class="dropdown">
+    									<button class="btn btn-success dropdown-toggle" type="button" data-toggle="dropdown">Lists<span class="caret"></span></button>
+    									<ul class="dropdown-menu">
+      										<li><a href="/pbb/categories/list">Categories</a></li>
+      										<li><a href="/pbb/cities/list">Cities</a></li>
+      										<li><a href="/pbb/states/list">States</a></li>
+      										<!-- <li><a href="/pbb/subscriptions/list">Subscriptions</a></li>  -->
+    									</ul>
+  									</div>
+  								</li>
+    						
+    							<li class="nav-item">
+    								<div class="dropdown">
+    									<button class="btn btn-warning dropdown-toggle" type="button" data-toggle="dropdown">Configuration<span class="caret"></span></button>
+    									<ul class="dropdown-menu">
+      										<li><a href="/pbb/Settings/list">System Settings</a></li>
+      										<li><a href=""></a></li>
+      										<li><a href=""></a></li>
+      										<li><a href=""></a></li>
+    									</ul>
+  									</div>
+  								</li>
+    						
+    							<li class="nav-item">
+    								<div class="dropdown">
+    									<button class="btn btn-danger dropdown-toggle" type="button" data-toggle="dropdown">CMS<span class="caret"></span></button>
+    									<ul class="dropdown-menu">
+      										<li><a href="/pbb/cmsParameters/list">Pages</a></li>
+      										<li><a th:href="@{/pbb/users/resetMyPass/{username}(username=${username})}">Change my password</a></li>
+    									</ul>
+  									</div>
+  								</li>
+  								
+  								<li class="nav-item">
+    								<div class="dropdown">
+    									<button class="btn btn-info dropdown-toggle" type="button" data-toggle="dropdown">Reports<span class="caret"></span></button>
+    									<ul class="dropdown-menu">
+      										<!-- <li><a href="/pbb/reports/viewCustomers">Customers View</a></li> -->
+      										<li><a href="/pbb/reports/viewLogsSel">Logs File</a></li>
+      										<li><a href="/pbb/reports/viewPaymentsSel">Payments</a></li>
+    									</ul>
+  									</div>
+  								</li>
+  								
+  								<li class="nav-item">
+  									<a href="/pbb/index" class="btn btn-secondary" role="button" aria-pressed="true">Log Off</a>	     							
+      							</li>
+      							
+      							<li class="nav-item">
+    								<div class="dropdown">
+    									<button class="btn btn-light dropdown-toggle disabled" type="button" data-toggle="dropdown">Disabled<span class="caret"></span></button>
+    									<ul class="dropdown-menu">
+      										<li><a href=""></a></li>
+      										<li><a href=""></a></li>
+      										<li><a href=""></a></li>
+      										<li><a href=""></a></li>
+    									</ul>
+  									</div>
+  								</li> 
+      							
+    						</ul>
+  						</div>
+					</nav>
+
+    			</div>
+    		</div>
+    	</div>
+	</body>
+ 
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org"> 
+
+	<head>
+
+  		<meta charset="utf-8">
+      	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      
+      	<title>Peoples Best Buy</title>
+      
+      	<!-- Favicon Icon -->
+      	<link rel="icon" type="image/png" th:href="@{/img/favicon.png}" th:src="@{/img/favicon.png}">
+      
+      	<!-- Bootstrap core CSS-->
+      	<link th:href="@{/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+           
+      
+      	<!-- Font Awesome-->
+      	<link th:href="@{/vendor/fontawesome/css/all.min.css}" rel="stylesheet">
+      
+      	<!-- Font Awesome-->
+      	<link th:href="@{/vendor/icofont/icofont.min.css}" rel="stylesheet">
+      
+      	<!-- Select2 CSS-->
+      	<link th:href="@{/vendor/select2/css/select2.min.css}" rel="stylesheet">
+      
+      	<!-- Custom styles for this template-->
+      	<link th:href="@{/css/osahan.css}" rel="stylesheet">
+      	<link th:href="@{/css/style.css}" rel="stylesheet">
+      
+      <!-- Owl Carousel -->
+      <link th:href="@{/vendor/owl-carousel/owl.carousel.css}" rel="stylesheet">
+      <link th:href="@{/vendor/owl-carousel/owl.theme.css}" rel="stylesheet">
+   </head>
+		
+	</head>
+
+	<body>
+
+  <!-- Navigation -->
+  		<span th:include="topMenu"> Top Menu </span>
+  		
+  		
+    	<div class="container">
+    	
+    	
+      			 				
+  				<div class="simpleFrame">
+					
+						<label class="titleViolet">Thanks for your contacting us!</label><br>
+						<label class="titleViolet" th:text="${message}">message</label>
+										
+					
+				</div>
+  				
+  				
+  				  				  						
+  		</div>
+  		
+  		<!-- Footer -->
+    	<div class="banner-overlay"><br></div>
+    	<span th:include="footer">Footer Line(s)</span>
+    	
+    	
+	</body>
+</html>			
+				
+				

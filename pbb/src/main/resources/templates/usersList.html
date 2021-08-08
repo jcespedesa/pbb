@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+	<head>
+		<title>All Users</title>
+		
+    	<meta charset="utf-8">
+    	<meta http-equiv="x-ua-compatible" content="ie=edge">
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
+    	
+    	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
+  		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  		<script type="text/javascript" th:src="@{/js/modal.js}" src="../static/js/modal.js"></script>
+		
+		<script th:src="@{/js/modalDelete.js}"></script>
+				
+  		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  		<link rel="stylesheet" th:href="@{/css/modalDelete.css}" href="../static/css/modalDelete.css"/>	
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"/>
+  		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+    	<link th:href="@{/css/style.css}" rel="stylesheet">
+    	
+	</head>
+	
+	
+	<body>
+    	<div class="container my-2">
+    		<div class="card">
+    			<div class="card-body">
+        			<div th:switch="${users}" class="container my-5">
+            			<p class="my-5">
+                			<a href="/pbb/users/edit" class="btn btn-primary btn-sm">
+                			<i class="fas fa-user-plus ml-2"> Add User </i></a>
+                			<a href="/pbb/MainMenu" class="btn btn-secondary btn-sm">
+                			<i class="fas fa-back ml-2"> Back to Main Menu </i></a>
+            			</p>
+            			<div class="col-md-10">
+                			<label style="color:#808000; background-color:#FFFFCC;" th:case="null">No records found !!</label>
+                			<div th:case="*">
+                    			<table class="table table-striped table-responsive-md">
+                        			<thead>
+                        				<tr><th style="color: #880000" colspan="5"><b>Users List</b></th></tr>
+                            			<tr>
+                            				<th style="color:#006400;">ID</th>
+		                                	<th style="color:#006400;">Username</th>
+		                                	<th style="color:#006400;">Domain</th>
+		                                	<th style="color:#006400;">Type</th>
+		                                	<th style="color:#006400;">Priznak</th>
+		                                	<th style="color:#006400;">Active</th>
+		                                	<th style="color:#006400;">Email</th>
+		                                	<th style="color:#006400;">Edit</th>
+		                                	<th style="color:#006400;">Delete</th>
+		                                	<th style="color:#006400;">Set/Reset Password</th>
+                            			</tr>
+                        			</thead>
+                        			<tbody>
+                            			<tr th:each="user : ${users}">
+                            			
+                            				<td th:text="${user.userid}"></td>
+		                                	<td th:text="${user.username}" nowrap></td>
+		                                	<td th:text="${user.dom}"></td>
+		                                	<td th:text="${user.type}"></td>
+		                                	<td th:text="${user.priznak}"></td>
+		                                	<td th:text="${user.active}"></td>
+		                                	<td th:text="${user.email}"></td>
+		                                	<td>
+                                    			<a th:href="@{/pbb/users/edit/{id}(id=${user.userid})}" class="btn btn-primary btn-sm">
+                                        			<i class="fas fa-edit"></i>
+                                    			</a>
+                                			</td>
+                                			<td>
+                                				                                    			
+                                    			<a th:href="@{/pbb/users/delete/{id}(id=${user.userid})}" class="btn btn-danger btn-sm deleteBtn" onClick="return confirmDelete();">
+                                    				<i class="fas fa-trash" style="font-size:12px"></i>
+                                    			</a>
+                                    			
+                                			</td>
+                                			<td>
+                                				                                    			
+                                    			<a th:href="@{/pbb/users/resetPass/{id}(id=${user.userid})}" class="btn btn-info btn-sm resetBtn">
+                                    				<i class="fas fa-eraser" style="font-size:12px"></i>
+                                    			</a>
+                                    			
+                                			</td>
+                            			</tr>
+                        			</tbody>
+                    			</table>
+                			</div>
+ 
+            			</div>
+        			</div>
+    			</div>
+    			
+				
+				
+    			<div style="color:#000088; font-size:10px;font-weight: bold;" class="card-footer text-muted">TRC Corp</div>
+    		</div>
+		</div>
+	</body>
+ 
+</html>

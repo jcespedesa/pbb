@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+ 
+	<head>
+    	<title>View Logs Selection</title>
+		
+			<meta charset="utf-8">
+    		<meta name="viewport" content="width=device-width, initial-scale=1">
+    	
+    		<script th:src="@{/js/jquery-3.4.1.min.js}"></script>
+			<script th:src="@{/js/bootstrap-4.0.0.min.js}"></script>
+  			<script th:src="@{/js/calendarControl.js}"></script>
+							
+  			<link th:href="@{/css/bootstrap-4.0.0.min.css}" rel="stylesheet">
+			<link th:href="@{/css/style.css}" rel="stylesheet">
+			<link th:href="@{/css/calendarControl.css}" rel="stylesheet">
+  
+	</head>
+ 
+	<body>
+    	<div class="container my-5">
+        	<div style="color:teal;font-size=12px;font-weight:bold;">Logs File</div>
+        	
+        	<a href="/pbb/MainMenu" class="btn btn-info btn-sm">
+                <i class="fas fa-back ml-2">Back to Main Menu</i>
+            </a>
+            
+        	<div class="card">
+				<div class="card-body">
+                	<section class="page-section" id="mainBody">
+    					
+    					<form id="logsForm" th:action="@{/pbb/reports/logsView}" method="Post">
+      						<div class="row" >
+        						<div class="col-lg-4 text-center">
+				          			<p class="navbar-brand" style="color:#880000;font-size:15px;">Date Selection</p>
+				         			
+        						</div>
+      						</div>
+     			     		<div class="row">
+     			     		
+        						<div class="col-sm-3 text-center">
+				          			<label for="initialDate" class="col-form-label">Initial Date</label> 
+                       				<input type="text" name="initialDate" size="10" maxlength="10" onfocus="showCalendarControl(this);" required />
+        						</div>
+      												
+        						<div class="col-sm-3 text-center">
+				          			<label for="finalDate" class="col-form-label">Final Date</label> 
+                       				<input type="text" name="finalDate" size="10" maxlength="10" onfocus="showCalendarControl(this);" required/>
+        						</div>
+        					</div>
+        					
+        					<div class="row">
+        					
+        						<div class="form-group col-md-8">
+        							<div class="col-lg-4 text-center">
+        								<p><br><input class="btn btn-success" type="submit" value="Submit"></p>
+        							</div>	
+        						</div>
+        					</div>
+  				  			
+  						</form>		  						
+  						  		
+  					</section>
+  					
+  					<div th:text="${message}"></div>
+                	                    
+                </div>
+            </div>
+           	<div style="color:#000088; font-size:10px;font-weight: bold;" class="card-footer text-muted">TRC Corp</div>
+         </div>   
+	</body>
+ 
+</html>

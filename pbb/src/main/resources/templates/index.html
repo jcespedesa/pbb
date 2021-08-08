@@ -1,0 +1,256 @@
+<!doctype html>
+<html  xmlns:th="http://www.thymeleaf.org">
+   	<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      
+    <title>Peoples Best Buy</title>
+      
+    <!-- Favicon Icon -->
+    <link rel="icon" type="image/png" th:href="@{/img/favicon.png}" th:src="@{/img/favicon.png}">
+    
+          
+    <!-- Bootstrap core CSS-->
+    <link th:href="@{/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet" type="text/css">
+           
+     
+    <!-- Font Awesome-->
+    <link th:href="@{/vendor/fontawesome/css/all.min.css}" rel="stylesheet" type="text/css">
+      
+    <!-- Font Awesome-->
+    <link th:href="@{/vendor/icofont/icofont.min.css}" rel="stylesheet" type="text/css">
+      
+    <!-- Select2 CSS-->
+      <link th:href="@{/vendor/select2/css/select2.min.css}" rel="stylesheet" type="text/css">
+      <link th:href="@{/css/style.css}" rel="stylesheet" type="text/css">
+      
+      <!-- Custom styles for this template-->
+      <link th:href="@{/css/osahan.css}" rel="stylesheet" type="text/css">
+      
+      <!-- Owl Carousel -->
+      <link th:href="@{/vendor/owl-carousel/owl.carousel.css}" rel="stylesheet" type="text/css">
+      <link th:href="@{/vendor/owl-carousel/owl.theme.css}" rel="stylesheet" type="text/css">
+      
+      
+            
+   </head>
+   
+   <!-- Navigation -->
+  
+  		<span th:include="topMenu"> Top Menu </span>
+  
+   <!-- Main Section -->
+   
+     
+   <body>
+      
+      <section>
+         <div class="banner-overlay"></div>
+         
+         <div class="row" style="background-color:#ffffcc;" th:each="label,iStat : ${labels}">
+         	<div class="col"></div>
+         	<div class="col">
+         		<label class="advertisementText" th:text="${label.sentence1}">Label</label>
+         	</div>
+         	<div class="col"></div>
+      </div>   
+               
+         <div class="row">
+         
+         	<div class="col"></div>
+         
+         	<div class="col-md-auto">
+         		<div class="slide-scenario">
+         	
+         			<div class="w3-content w3-section">
+	               		<img class="mySlides img-mainSlide" th:src="@{${'/pbb/website/images/slideShow/image1.jpg'}}">
+	                   	<img class="mySlides img-mainSlide" th:src="@{${'/pbb/website/images/slideShow/image2.jpg'}}">
+	                   	<img class="mySlides img-mainSlide" th:src="@{${'/pbb/website/images/slideShow/image3.jpg'}}">
+	                   	<img class="mySlides img-mainSlide" th:src="@{${'/pbb/website/images/slideShow/image4.jpg'}}">
+	                   	<img class="mySlides img-mainSlide" th:src="@{${'/pbb/website/images/slideShow/image5.jpg'}}">
+               		</div>
+         		</div>
+         	</div>
+         	
+         	<div class="col"></div>
+         	
+        </div>
+        <div class="row"> 
+        
+        	<div class="col"></div>	
+         	
+         	<div class="col-md-auto">
+         		         			
+  				<div class="slide-scenario" th:each="parameter,iStat : ${parameters}">
+  					<ul>
+			    		<li class="advertisementText" th:text="${parameter.sentence1}"></li>
+			    		<li class="advertisementText" th:text="${parameter.sentence2}"></li>
+			    		<li class="advertisementText" th:text="${parameter.sentence3}"></li>
+			    		<li class="advertisementText" th:text="${parameter.sentence4}"></li>
+			    	</ul>
+				
+				</div>
+         		
+         	</div>
+         	
+         	<div class="col"></div>
+         	
+         </div>
+                           
+         <div class="row">
+             <div class="col-md-12">
+                <div class="slide-scenario">
+           			<div th:each="parameter,iStat : ${parameters}" style="background-color:#ffffcc;">
+           				<label  th:text="${parameter.param3}" class="advertisementText">Popular Stores:</label>
+           			</div>	
+               		<div class="owl-carousel owl-carousel-category owl-theme">
+               		
+               			<div class="item" th:each="store,iStat : ${stores}">
+               				<div class="osahan-category-item">
+                       		                       		                       			                      			
+                      			<div th:if="${store.logo}==''">
+                      				<a th:href="@{/pbb/Details/{storeid}(storeid=${store.clientid})}">	
+                       					<img th:src="@{${'/images/logos/generalStoreLogo.png'}}" alt=""/>
+                       					<label class="simpleLabelOrange" th:text="${store.businessName}" >Store Name</label>
+                       				 </a>	
+                           		</div>			
+        							
+        						<div th:unless="${store.logo}==''">
+        							<a th:href="@{/pbb/Details/{storeid}(storeid=${store.clientid})}">		
+        								<img   th:src="@{${'/pbb/clients/'+ store.clientid +'/logo/'+ store.logo}}" alt=""/>
+        								<label class="simpleLabelOrange" th:text="${store.businessName}" >Store Name</label>
+        							</a>
+                           		</div>
+        						                             	                              		
+                        	</div>
+                        	
+                    	</div>
+                    	            
+                	</div>
+               		
+              	</div>
+          	</div>
+       	  </div>
+      </section>
+      
+      <div class="row" style="background-color:#ffffcc;" th:each="label,iStat : ${labels}">
+         	<div class="col"></div>
+         	<div class="col">
+         		<label class="advertisementText" th:text="${label.sentence2}">Label</label>
+         	</div>
+         	<div class="col"></div>
+      </div>       
+      
+      <section >
+       
+            <div class="row" th:each="message : ${parameters}">
+            	
+               	<div class="col-sm-4">
+               		<div class="slide-news">
+                  		<div class="products-box">
+                     		<figure><img alt="" th:src="@{/images/frontImageLeft.jpg}" class="img-news">
+                     			<figcaption class="normalText" th:text="${message.text1}"></figcaption>
+                     			<a class="titleBlue" href="/pbb/About">About us</a>
+                     		</figure>	 
+                  		</div>
+               		</div>
+               	</div>	
+               	<div class="col-sm-4">
+               		<div class="slide-news">
+                  		<div class="products-box">
+                     		<figure><img alt="" th:src="@{/images/frontImageCenter.jpg}" class="img-news">
+                     			<figcaption class="normalText" th:text="${message.text2}"></figcaption>
+                     			<a class="titleBlue" href="/pbb/Register">Advertise on Our Site</a>
+                     		</figure>
+                  		</div>
+               		</div>
+               	</div>	
+               	<div class="col-sm-4">
+               		<div class="slide-news">
+                  		<div class="products-box">
+                     		<figure><img alt="" th:src="@{/images/frontImageRight.jpg}" class="img-news">
+                     			<figcaption class="normalText" th:text="${message.text3}"></figcaption>
+                     			<a class="titleBlue" href="/pbb/Categories">View all Businesses</a>
+                     		</figure>
+                  		</div>
+               		</div>
+               </div>
+           		
+           </div>
+           <div class="row"> 
+           		
+           		<div class="col-sm-4"></div>
+           		
+           		<div class="col-sm-3">
+                	<div class="slide-news">
+                  	 	<div class="location-dropdown">
+                     		<i class="icofont-location-arrow" id="titlePurpleSmall">Search by Category</i>
+                     		<form th:action="@{/pbb/Search}" method="post">
+                        		<select class="form-control" name="categoryNum" required>
+                        			<option th:value="''" th:text="'Select--'"></option>
+    								<option th:each="list : ${categories}" th:value="${list.categoryNum}" th:text="${list.categoryName}"></option>
+    							</select>
+                        		
+                        		<input type="submit" class="btn btn-info"  value="Search"/>
+                    		</form>	
+                    	</div>
+                  		
+               		</div> 
+            	</div> 
+            	
+            	
+            	
+            	
+            	<div class="col-sm-2">
+            		<div class="slide-news">
+                  	 	<div class="location-dropdown">
+                     		<i class="icofont-location-arrow" id="titlePurpleSmall">Search by City</i>
+                     		<form th:action="@{/pbb/SearchCity}" method="post">
+                        		<select class="form-control" name="state" required>
+                        			<option th:value="''" th:text="'Select--'"></option>
+    								<option th:each="list : ${states}" th:value="${list.state}" th:text="${list.state}"></option>
+    							</select>
+                        		
+                        		<input type="submit" class="btn btn-info"  value="Search"/>
+                    		</form>	
+                    	</div>
+                  		
+               		</div> 
+            	
+            	</div>
+            	
+            <div class="col-sm-6"></div>
+            	
+            	  
+          </div>
+      </section>
+      
+      <!-- Pre footer -->
+      		<span th:include="preFooter">Pre Footer row</span>
+      
+      <!-- Footer -->
+    		<span th:include="footer">Footer Line(s)</span>
+      
+      <!-- jQuery -->
+      <script th:src="@{/vendor/jquery/jquery-3.3.1.slim.min.js}"></script>
+      
+      <!-- Bootstrap core JavaScript-->
+      <script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+      
+      <!-- Select2 JavaScript-->
+      <script th:src="@{/vendor/select2/js/select2.min.js}"></script>
+      
+      <!-- Owl Carousel -->
+      <script th:src="@{/vendor/owl-carousel/owl.carousel.js}"></script>
+      
+      <!-- Custom scripts for all pages-->
+      <script th:src="@{/js/custom.js}"></script>
+      
+      <!-- Regular Carousel -->
+      <script th:src="@{/js/carouselControl.js}"></script>
+      
+      
+      
+   </body>
+</html>

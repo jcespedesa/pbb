@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+ 
+	<head>
+    	<title>Add/Modify CMS Parameters</title>
+		
+			<meta charset="utf-8">
+    		<meta http-equiv="x-ua-compatible" content="ie=edge">
+    		<meta name="viewport" content="width=device-width, initial-scale=1">
+    	
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
+  			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+					
+  			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+			<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+  			<link th:href="@{/css/style.css}" rel="stylesheet">
+    	
+	</head>
+ 
+	<body>
+    	<div class="container my-5">
+        	<div style="color: #006400; font-size=12px; font-weight:bold;"> Add/Modify CMS Parameters</div>
+        	<a href="/pbb/cmsParameters/list" class="btn btn-success btn-sm"><i class="fas fa-back ml-2">Back</i></a>
+        	<div class="card">
+        	
+            	<div class="card-body bg-form">
+                	
+                    	<form th:action="@{/pbb/cmsParameters/createCmsParameter}" th:object="${cmsParameter}" method="post">
+                        	
+                        		<div class="form-group">
+                                	<label for="priznak" class="col-form-label">ID<sup>*</sup>:</label> 
+                                	<input type="text" th:field="*{paramid}" id="paramid" placeholder="ID" size='3' disabled />
+                            	</div>
+                        	                        		
+                            	<div class="form-group">
+                                	<label for="priznak" class="col-form-label">Description<sup>*</sup>:</label> 
+                                	<input type="text" th:field="*{priznak}" id="priznak" placeholder="Description" required  size="50" maxlength="50"/>
+                            	</div>
+                            	
+                            	<div class="form-group">
+                                	<label for="param1" class="col-form-label">Param 1:</label> 
+                                	<input type="text" th:field="*{param1}" id="param1" placeholder="Param 1" size="10" maxlength="10"/>
+                            	</div>
+                            	
+                            	<div class="form-group">
+                                	<label for="param2" class="col-form-label">Param 2:</label> 
+                                	<input type="text" th:field="*{param2}" id="param2" placeholder="Param 2" size="10" maxlength="10"/>
+                            	</div>
+                            	
+                            	<div class="form-group">
+                                	<label for="param3" class="col-form-label">Param 3:</label> 
+                                	<input type="text" th:field="*{param3}" id="param3" placeholder="Param 3" size="100" maxlength="100"/>
+                            	</div>
+                            	
+ 								<div class="form-group">
+                                	<label for="param4" class="col-form-label">Param 4:</label> 
+                                	<input type="text" th:field="*{param4}" id="param4" placeholder="Param 4" size="100" maxlength="100"/>
+                            	</div>
+ 									
+ 								<div class="form-group">
+                                	<label for="sentence1" class="col-form-label">Sentence 1:</label> 
+                                	<input type="text" th:field="*{sentence1}" id="sentence1" placeholder="Sentence 1" size="150" maxlength="200"/>
+                            	</div>
+ 
+ 								<div class="form-group">
+                                	<label for="sentence2" class="col-form-label">Sentence 2:</label> 
+                                	<input type="text" th:field="*{sentence2}" id="sentence2" placeholder="Sentence 2" size="150" maxlength="200"/>
+                            	</div>
+ 
+ 								<div class="form-group">
+                                	<label for="sentence3" class="col-form-label">Sentence 3:</label> 
+                                	<input type="text" th:field="*{sentence3}" id="sentence3" placeholder="Sentence 3" size="150" maxlength="200"/>
+                            	</div>
+ 
+ 								<div class="form-group">
+                                	<label for="sentence4" class="col-form-label">Sentence 4:</label> 
+                                	<input type="text" th:field="*{sentence4}" id="sentence4" placeholder="Sentence 4" size="150" maxlength="200"/>
+                            	</div>
+                            	                          	
+                            	
+                            	<div class="form-group">
+      								<label for="text1">Text 1:</label><br>
+      								<textarea id="text1" th:field="*{text1}" rows="5" cols="120"></textarea>
+					   			</div>
+ 
+ 								<div class="form-group">
+      								<label for="text2">Text 2:</label><br>
+      								<textarea id="text2" th:field="*{text2}" rows="5" cols="120"></textarea>
+					   			</div>
+ 
+ 								<div class="form-group">
+      								<label for="text3">Text 3:</label><br>
+      								<textarea id="text3" th:field="*{text3}" rows="5" cols="120"></textarea>
+					   			</div>
+ 
+ 								<div class="form-group">
+      								<label for="text1">Text 4:</label><br>
+      								<textarea id="text4" th:field="*{text4}" rows="5" cols="120"></textarea>
+					   			</div>
+ 
+ 
+                            	<div class="form-group">
+                                	<input type="submit" class="btn btn-primary btn-sm" value=" Submit ">
+                                	<a href="/pbb/cmsParameters/list" class="btn btn-secondary btn-sm">
+                					<i class="fas fa-back ml-2"> Cancel </i></a>
+                            	</div>
+ 
+                            	<input type="hidden" th:field="*{paramid}">
+     
+                        	
+                    	</form>
+                    
+                	
+            	</div>
+            	<div style="color:#000088; font-size:10px;font-weight: bold;" class="card-footer text-muted">TRC Corp</div>
+        	</div>
+    	</div>
+	</body>
+ 
+</html>

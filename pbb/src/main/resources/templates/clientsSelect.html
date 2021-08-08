@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+ 
+	<head>
+	
+		<title>Clients Selection</title>
+		
+    	<meta charset="utf-8">
+    	<meta http-equiv="x-ua-compatible" content="ie=edge">
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
+    	
+    	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+  		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  		  			    	
+    	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	
+    	
+	</head>
+ 
+	<body>
+    	<div class="container my-2">
+    	
+    		<a href="/pbb/MainMenu" class="btn btn-success btn-sm"><i class="fas fa-back ml-2">Back</i></a>
+    	
+    		<div class="card">
+    			<div class="card-body">
+    			
+    			<span th:each="alpha : ${alphaList}">
+    				<a th:href="@{/pbb/clients/listAlpha/{alpha}(alpha=${alpha})}" th:text="${alpha}"></a>	-
+				</span>  
+           			<a href="/pbb/clients/list">
+           				<label>Everybody</label>
+           			</a>	
+    			</div>
+    		</div>
+    	</div>
+	</body>
+ 
+</html>

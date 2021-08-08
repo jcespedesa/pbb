@@ -1,0 +1,72 @@
+<!doctype html>
+<html  xmlns:th="http://www.thymeleaf.org">
+   <head>
+      <!-- Required meta tags -->
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <meta name="description" content="Askbootstrap">
+      <meta name="author" content="Askbootstrap">
+      <title>Privacy Terms</title>
+      <!-- Favicon Icon -->
+      <link rel="icon" type="image/png" th:href="@{/img/favicon.png}" th:src="@{/img/favicon.png}">
+      <!-- Bootstrap core CSS-->
+      <link th:href="@{/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+           
+                 
+      <!-- Select2 CSS-->
+      
+      <link th:href="@{/css/style.css}" rel="stylesheet">
+      <link th:href="@{/css/osahan.css}" rel="stylesheet"> 	
+     
+   </head>
+   
+   <!-- Navigation -->
+  
+  		<span th:include="topMenu"> Top Menu </span>
+  
+   <!-- Main Section -->
+   
+     
+   <body>
+      
+    <section>
+    	<div class="container">
+            
+        	<div class="infoBanner">
+                                 
+      			<div th:each="parameter,iStat : ${parameters}">
+      			
+                   <h5 class="mb-4" th:text="${parameter.sentence1}"></h5>
+                   <pre><label th:text="${parameter.text1}"></label></pre>
+                              	                              	
+                </div>
+                        
+             </div>
+        </div>
+                             
+	</section>
+    
+    <!-- Pre footer -->
+      <span th:include="preFooter">Pre Footer row</span>
+          
+      <!-- Footer -->
+    <div class="banner-overlay"><br></div>
+    <span th:include="footer">Footer Line(s)</span>
+      
+      <!-- jQuery -->
+    <script th:src="@{/vendor/jquery/jquery-3.3.1.slim.min.js}"></script>
+      
+      <!-- Bootstrap core JavaScript-->
+    <script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+      
+      <!-- Select2 JavaScript-->
+    <script th:src="@{/vendor/select2/js/select2.min.js}"></script>
+      
+    <!-- Owl Carousel -->
+      <script th:src="@{/vendor/owl-carousel/owl.carousel.js}"></script>
+      
+      <!-- Custom scripts for all pages-->
+      <script th:src="@{/js/custom.js}"></script>
+      
+   </body>
+</html>

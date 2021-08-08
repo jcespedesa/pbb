@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+ 
+	<head>
+    	<title>AJAX city search</title>
+		
+			<meta charset="utf-8">
+    		<meta http-equiv="x-ua-compatible" content="ie=edge">
+    		<meta name="viewport" content="width=device-width, initial-scale=1">
+    	
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
+  			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  			<script type="text/javascript" th:src="@{/js/ajaxCitySearch.js}" src="../static/js/ajaxCitySearch.js"></script>
+					
+  			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+			<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+  		
+    	
+	</head>
+ 
+	<body>
+    	<div class="container my-5">
+        	<h5 style="color: #006400; font-size=12px; font-weight:bold;"> AJAX City Search</h5>
+        	<div class="card">
+        	   	<div class="card-body">
+        	   	
+        	   		<a href="/pbb-control/main" class="btn btn-secondary btn-sm">
+                			<i class="fas fa-back ml-2"> Back to Main menu </i></a>
+        	   	
+        	   		<div class="container" style="min-height: 500px">
+
+    					<div class="starter-template">
+        			
+        				<div id="feedback"></div>
+
+        				<form class="form-horizontal" id="search-form">
+        				
+				    		<div class="form-group form-group-lg">
+				        		<label class="col-sm-2 control-label">City Name</label>
+				            	<div class="col-sm-10">
+				            		<input type="text" class="form-control" id="city"/>
+				            	</div>
+				        	</div>
+
+            				<div class="form-group">
+                				<div class="col-sm-offset-2 col-sm-10">
+                    				<button type="submit" id="bth-search" class="btn btn-primary btn-lg">Search</button>
+                				</div>
+            				</div>
+        				</form>
+
+    				</div>
+                	                    
+            	</div>
+         	</div>
+         	<div style="color:#000088; font-size:10px;font-weight: bold;" class="card-footer text-muted">TRC Corp</div>
+        </div>
+    
+	</body>
+ 
+</html>

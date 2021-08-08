@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+ 
+	<head>
+    	<title>Add/Modify Categories</title>
+		
+			<meta charset="utf-8">
+    		<meta http-equiv="x-ua-compatible" content="ie=edge">
+    		<meta name="viewport" content="width=device-width, initial-scale=1">
+    	
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
+  			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+					
+  			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+			<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+  			<link th:href="@{/css/style.css}" rel="stylesheet">
+    	
+	</head>
+ 
+	<body>
+    	<div class="container my-5">
+    		<a href="/pbb/categories/list" class="btn btn-info btn-sm">
+                <i class="fas fa-back ml-2"> Back </i>
+            </a><br>
+        	<font style="color: #006400; font-size=12px; font-weight:bold;"> Add/Modify Categories</font>
+        	
+        	<div class="card">
+        	
+            	<div class="card-body bg-form">
+                	<div class="col-md-10">
+                    	<form action="#" th:action="@{/pbb/categories/createCategory}" th:object="${category}" method="post">
+                        	<div class="row">
+                            	<div class="form-group col-md-8">
+                                	<label for="categoryNum" class="col-form-label">Category Number</label> 
+                                	<input type="text" th:field="*{categoryNum}" class="form-control" size="10"
+                                            id="categoryNum" required maxlength="10" readOnly/>
+                            	</div>
+                            	<div class="form-group col-md-8">
+                                	<label for="categoryName" class="col-form-label">Category Description<sup>*</sup></label> 
+                                	<input type="text" th:field="*{categoryName}" class="form-control"
+                                            id="categoryName" placeholder="Description" required maxlength="25"/>
+                            	</div>
+                            	<div class="form-group col-md-8">
+                                	<label for="icon" class="col-form-label">Icon File</label> 
+                                	<input type="text" th:field="*{icon}" class="form-control"
+                                            id="icon" placeholder="Icon file" maxlength="50" readOnly/>
+                            	</div>
+                            	
+                            	<div class="form-group col-md-6">
+                                	<label for="popularity">Popularity : </label> 
+                                	<select th:field="*{popularity}">
+    									<option th:each="i : ${#numbers.sequence(0,10)}" th:value="${i}" th:text="${i}"></option>
+									</select>
+                            	</div>
+                            	<div class="form-group col-md-8">
+      								<label for="active">Active : </label>
+      								<select th:field="*{active}">
+      									<option th:value="*{active}" th:text="*{active}"></option>
+    									<option th:value="'Yes'" th:text="Yes"></option>
+    									<option th:value="'No'" th:text="No"></option>
+									</select>
+    							</div>
+    							
+    							<div class="form-group col-md-8">
+    								<h5>Metadata Info</h5>
+    							</div>	
+    							    							
+    							<div class="form-group">
+      								<label for="identityMetaData">Identity</label><br>
+      								<textarea id="identityMetaData" th:field="*{identityMetaData}" rows="7" cols="100"></textarea>
+					   			</div>
+ 							
+    							<div class="form-group">
+      								<label for="directRelationsMetaData">Direct Relations</label><br>
+      								<textarea id="directRelationsMetaData" th:field="*{directRelationsMetaData}" rows="7" cols="100"></textarea>
+					   			</div>
+					   			
+					   			<div class="form-group">
+      								<label for="indirectRelationsMetaData">Indirect Relations</label><br>
+      								<textarea id="indirectRelationsMetaData" th:field="*{indirectRelationsMetaData}" rows="7" cols="100"></textarea>
+					   			</div>
+    							 
+                            	<div class="form-group col-md-8" style="padding-top: 50px;">
+                                	<input type="submit" class="btn btn-primary btn-sm" value=" Submit ">
+                                	<a href="/pbb/categories/list" class="btn btn-secondary btn-sm">
+                					<i class="fas fa-back ml-2"> Cancel </i></a>
+                            	</div>
+ 
+                            	<input type="hidden" id="id" th:field="*{categoryId}">
+     
+                        	</div>
+                    	</form>
+                    
+                	</div>
+            	</div>
+            	<div style="color:#000088; font-size:10px;font-weight: bold;" class="card-footer text-muted">TRC Corp</div>
+        	</div>
+    	</div>
+	</body>
+ 
+</html>

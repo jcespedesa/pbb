@@ -1,0 +1,118 @@
+<!doctype html>
+<html  xmlns:th="http://www.thymeleaf.org">
+   <head>
+      <!-- Required meta tags -->
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      
+      <title>Contact Us</title>
+      <!-- Favicon Icon -->
+      <link rel="icon" type="image/png" th:href="@{/img/favicon.png}" th:src="@{/img/favicon.png}">
+      <!-- Bootstrap core CSS-->
+      <link th:href="@{/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+           
+      
+      <!-- Font Awesome-->
+      <link th:href="@{/vendor/fontawesome/css/all.min.css}" rel="stylesheet">
+      
+      <!-- Font Awesome-->
+      <link th:href="@{/vendor/icofont/icofont.min.css}" rel="stylesheet">
+      
+      <!-- Select2 CSS-->
+      <link th:href="@{/vendor/select2/css/select2.min.css}" rel="stylesheet">
+      <link th:href="@{/css/style.css}" rel="stylesheet">
+      
+      <!-- Custom styles for this template-->
+      <link th:href="@{/css/osahan.css}" rel="stylesheet">
+      
+      <!-- Owl Carousel -->
+      <link th:href="@{/vendor/owl-carousel/owl.carousel.css}" rel="stylesheet">
+      <link th:href="@{/vendor/owl-carousel/owl.theme.css}" rel="stylesheet">
+   </head>
+   
+   <!-- Navigation -->
+  
+  		<span th:include="topMenu"> Top Menu </span>
+  
+   <!-- Main Section -->
+   
+     
+   <body>
+      
+    	<section class="offer-dedicated-body pt-2 pb-2 mt-4 mb-4">
+    		<div class="container">
+        
+        		
+    				<div class="container">
+        				<div class="row">
+            				<div class="col-sm-6 col-lg-6">
+                				<h4 id="titlePurple">Email to a friend</h4><hr> 
+            				</div>
+        				</div>
+    				</div>
+				
+				<div class="container">
+    				<div class="row">
+        				<div class="col-md-8">
+            				<div class="well well-sm">
+            				
+                				<form th:action="@{/pbb/messages/emailToFriend}" method="post">
+                				
+                					<div class="row">
+                    					<div class="col-md-6">
+                        					
+                        					<div class="form-group">
+                        					    <label class="simpleLabelBlack" for="email">Email Address: </label>
+                            					<span class="glyphicon glyphicon-envelope"></span>
+                            					<input type="email" class="form-control" name="email" placeholder="Enter email" required="required" />
+                                			</div>
+                                			
+                                			<div class="form-group">
+                                				<label class="simpleLabelBlack" for="email">Add your website name: </label>
+                            					<span class="glyphicon glyphicon-envelope"></span>
+                                				<input class="form-control" name="website" placeholder="Enter your website" />
+                                			</div>
+                                					
+                                			<div class="form-group">
+                        						<label class="simpleLabelBlack" for="name">Message: </label>
+                        						<textarea name="message" class="form-control" rows="9" cols="25" required="required" maxlength="300"></textarea>
+                        					</div>
+                    						
+                    						<div class="input-group">
+                        						<button type="submit" class="btn btn-primary pull-right" id="btnContactUs">Send Message</button>
+                    						</div>
+                    							
+                						</div>
+                					</div>	
+                				</form>	
+            				</div>
+        				</div>
+        					
+    				</div>
+				</div>
+        	 </div>     
+		</section>
+      
+        
+      
+      <!-- Footer -->
+    	<div class="banner-overlay"><br></div>
+    	<span th:include="footer">Footer Line(s)</span>
+          
+      <!-- jQuery -->
+    	<script th:src="@{/vendor/jquery/jquery-3.3.1.slim.min.js}"></script>
+      
+      <!-- Bootstrap core JavaScript-->
+    	<script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+      
+      <!-- Select2 JavaScript-->
+    	<script th:src="@{/vendor/select2/js/select2.min.js}"></script>
+      
+    <!-- Owl Carousel -->
+      	<script th:src="@{/vendor/owl-carousel/owl.carousel.js}"></script>
+      
+      <!-- Custom scripts for all pages-->
+      	<script th:src="@{/js/custom.js}"></script>
+      
+   	</body>
+</html>

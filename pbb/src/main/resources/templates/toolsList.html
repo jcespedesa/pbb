@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+	<head>
+		<title>All Users</title>
+		
+    	<meta charset="utf-8">
+    	<meta http-equiv="x-ua-compatible" content="ie=edge">
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
+    	
+    	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
+  		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  						
+  		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  		<link th:href="@{/css/style.css}" rel="stylesheet">
+    	
+	</head>
+	
+	
+	<body>
+    	<div class="container my-2">
+    		<div class="card">
+    			<div class="card-body">
+        			<div th:switch="${users}" class="container my-5">
+            			<p class="my-5">
+                			<a href="/pbb/MainMenu" class="btn btn-secondary btn-sm">
+                			<i class="fas fa-back ml-2"> Back to Main Menu </i></a>
+            			</p>
+            			<div class="col-md-4">
+                			<div th:case="*">
+                    			<table class="table table-striped table-responsive-md">
+                        			
+                        			<tbody>
+                        				<tr>
+                            				<td>
+                                    			<a th:href="@{/pbb/tools/setCategoryNum}" class="btn btn-primary btn-sm">
+                                        			<i class="fas fa-tool">Insert Category Number</i>
+                                    			</a>
+                                			</td>
+                                			<td>
+                                    			<a th:href="@{/pbb/api/synonymsAPIsel}" class="btn btn-info btn-sm">
+                                        			<i class="fas fa-tool">Synonyms API Test</i>
+                                    			</a>
+                                			</td>
+                                		</tr>
+                        			</tbody>
+                    			</table>
+                			</div>
+ 
+            			</div>
+        			</div>
+    			</div>
+    			
+				
+				
+    			<div style="color:#000088; font-size:10px;font-weight: bold;" class="card-footer text-muted">TRC Corp</div>
+    		</div>
+		</div>
+	</body>
+ 
+</html>

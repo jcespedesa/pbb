@@ -1,0 +1,110 @@
+<!doctype html>
+<html  xmlns:th="http://www.thymeleaf.org">
+   <head>
+      <!-- Required meta tags -->
+      <meta charset="utf-8">
+            
+      <title>Store Details</title>
+      <!-- Favicon Icon -->
+      <link rel="icon" type="image/png" th:href="@{/img/favicon.png}" th:src="@{/img/favicon.png}">
+      
+      <!-- Bootstrap core CSS-->
+      <link th:href="@{/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+            
+      <!-- General CSS template -->
+      <link th:href="@{/css/style.css}" rel="stylesheet">
+          
+            
+   </head>
+   
+   <!-- Navigation -->
+  		
+  		<span th:include="topMenu"> Top Menu </span>
+  
+   <!-- Main Section -->
+   
+     
+   <body>
+      
+    	<section class="section pt-4 pb-4 homepage-add-section" >
+    		<div class="container">
+    			<div class="row stickyObject-button">
+    				<ul style="list-style: none;">
+						<li><a class="previous-button round-button" href="/pbb/index">Back</a></li>
+						<li>&nbsp;</li>
+					</ul>
+					
+    			</div>
+    			
+    			<div class="row">	
+    			    			
+    				<div class="col">
+    			    	  			
+	    				<label class="head1" th:text="${store.businessName}"></label>
+													
+						<figure th:if="${store.logo}==''">
+							<img class="img-circle" th:src="@{${'/images/logos/generalStoreLogo.png'}}">
+						</figure>
+							
+						<figure th:unless="${store.logo}==''">
+							<img class="img-circle" th:src="@{${'/pbb/clients/'+ store.clientid +'/logo/'+ store.logo}}">
+						</figure>
+							
+						<div>
+							<label class="simpleLabelBlue general" th:text="${store.bizDescription}"></label>	
+	      				</div>
+      				
+      				</div>
+      				<div class="col-6">
+      				
+      					<div class="row">
+      					
+      						<div class="col" th:each="product : ${products}" style="padding:20px;border:1px solid;color:#ccc;">    					
+    				    
+    				    		<div  th:if="${product.product!=''}">
+    				    					
+    								<a th:href="@{/pbb/StoresPurchase/{id}(id=${product.productid})}">
+    									<img class="img-product" th:src="@{${'/pbb/clients/'+ product.storeId +'/images/'+ product.fileName}}" alt="Coming Soon"><br>
+  									</a>
+  									<label class="simpleLabelBlue" th:text="${product.product}"></label><br>
+  							  										
+      								<label class="simpleLabelBlue" th:text="'$ '+ ${product.price}"></label><br>
+      								<!-- <label style="color: #006400;" th:text="${product.status}"></label><br>	-->
+      							
+      								<section th:if="${product.fileName!=''}">
+      									<a th:href="@{/pbb/StoresPurchase/{id}(id=${product.productid})}" class="btn btn-secondary btn-sm">
+      										<i class="fas fa-back ml-2">Buy Now</i>
+                						</a>
+                					</section>
+                				</div>                						
+  							
+    					</div>
+    				</div>
+       			</div>
+       			</div>
+       		</div>                   
+		</section>
+      
+      <!-- Pre footer -->
+       <span th:include="preFooter">Pre Footer row</span>  
+      
+      <!-- Footer -->
+    	<span th:include="footer">Footer Line(s)</span>
+      
+      <!-- jQuery -->
+    	<script th:src="@{/vendor/jquery/jquery-3.3.1.slim.min.js}"></script>
+      
+      <!-- Bootstrap core JavaScript-->
+    	<script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+      
+      <!-- Select2 JavaScript-->
+    	<script th:src="@{/vendor/select2/js/select2.min.js}"></script>
+      
+    <!-- Owl Carousel -->
+      	<script th:src="@{/vendor/owl-carousel/owl.carousel.js}"></script>
+      
+      <!-- Custom scripts for all pages-->
+      	<script th:src="@{/js/custom.js}"></script>
+      
+   </body>
+</html>

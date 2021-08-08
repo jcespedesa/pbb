@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+ 
+	<head>
+    	<title>Uploading pictures</title>
+		
+			<meta charset="utf-8">
+    		<meta http-equiv="x-ua-compatible" content="ie=edge">
+    		<meta name="viewport" content="width=device-width, initial-scale=1">
+    	
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
+  			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  			<script type="text/javascript" th:src="@{/js/citiesDropDown.js}" src="../static/js/citiesDropDown.js"></script>
+					
+  			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+			<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+  		
+  			  		
+    	
+	</head>
+ 
+	<body>
+    	<div class="container my-5">
+        	<div style="color: #006400; font-size=12px; font-weight:bold;"></div>
+        	<a th:href="@{/pbb/clients/StoresPicsView/{id}(id=${store.clientid})}" class="btn btn-success btn-sm"><i class="fas fa-back ml-2">Back</i></a>
+        	<div class="card">
+				<div class="card-body">
+                				
+  					<div class="label">Upload/Replace Picture</div>
+  					
+  					<div class="row">
+	  					<div class="gallery-big">
+  						<p>
+    						<img th:src="@{${'/pbb/clients/'+ product.storeId +'/images/'+ product.fileName}}" style="width:300px;height:200px;border:2px solid">
+  						</p>
+  						<form method="POST" th:action="@{/pbb/clients/UploadProductPic}" enctype="multipart/form-data">
+			    			<input class="btn btn-primary btn-sm" type="file" name="file"/> <br/><br/>
+			    			<input type="hidden" name="storeId" th:value="${product.storeId}">
+			    			<input type="hidden" name="productId" th:value="${product.productid}">
+			    			<button class="btn btn-warning btn-sm" type="submit">Replace this picture</button>
+  						</form>
+					</div>
+		           </div>
+                	                    
+                </div>
+            </div>
+           	<div style="color:#000088; font-size:10px;font-weight: bold;" class="card-footer text-muted">TRC Corp</div>
+         </div>   
+	</body>
+ 
+</html>

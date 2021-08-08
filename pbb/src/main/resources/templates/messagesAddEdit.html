@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+ 
+	<head>
+    	<title>Review Messages</title>
+		
+			<meta charset="utf-8">
+    		<meta http-equiv="x-ua-compatible" content="ie=edge">
+    		<meta name="viewport" content="width=device-width, initial-scale=1">
+    	
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
+  			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+					
+  			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+			<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+  			<link th:href="@{/css/style.css}" rel="stylesheet">
+    	
+	</head>
+ 
+	<body>
+    	<div class="container my-5">
+        	<font style="color: #006400; font-size=12px; font-weight:bold;"> Review Messages</font>
+        	<div class="card">
+        	   	<div class="card-body bg-form">
+                	<form action="#" th:action="@{/pbb/messages/updateMessage}" th:object="${message}" method="post">
+                		<div class="row">
+                       		<div class="form-group col-sm-4">
+                          		<label><b>Date : </b></label> 
+                          		<span th:text="${message.dateCreation}">Date</span>                               		  
+                        	</div>
+                        	
+ 							<div class="form-group col-sm-4">
+                          		<label><b>Message From : </b></label> 
+                          		<span th:text="${message.cname}">From</span>                               		  
+                        	</div>
+ 						</div>
+ 						
+ 						<div class="row">
+                       		<div class="form-group col-sm-4">
+                          		<label><b>Email : </b></label> 
+                          		<span th:text="${message.email}">Email</span>                               		  
+                        	</div>
+                        	
+ 							<div class="form-group col-sm-4">
+                          		<label><b>Contact Phone(s) : </b></label> 
+                          		<span th:text="${message.phone}">Phone</span>                               		  
+                        	</div>
+ 						</div>
+ 						<div class="row">
+ 						
+ 							<div class="form-group col-sm-8">
+                          		<label><b>Message : </b></label><br> 
+                          		<span th:text="${message.message}">Message</span>                               		  
+                        	</div>
+ 						
+ 						
+ 						</div>
+ 						
+ 						<div class="row>">
+ 							
+ 							<div class="form-group">
+      							<label for="state"><b>Outcome/Solution:</b></label><br>
+      							<textarea id="outcome" th:field="*{outcome}" rows="5" cols="80" required></textarea>
+					   		</div>
+ 							
+ 
+                            <div class="form-group col-md-8">
+                               	<input type="submit" class="btn btn-primary btn-sm" value=" Update ">
+                               	<a href="/pbb/messages/list" class="btn btn-secondary btn-sm">
+                					<i class="fas fa-back ml-2"> Cancel </i></a>
+                            </div>
+ 						</div>
+                            <input type="hidden" id="id" th:field="*{id}">
+     
+                        
+                    </form>
+                    
+                </div>
+            </div>
+           <div style="color:#000088; font-size:10px;font-weight: bold;" class="card-footer text-muted">TRC Corp</div>
+        </div>
+    
+	</body>
+ 
+</html>

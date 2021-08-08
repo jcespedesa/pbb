@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+ 
+	<head>
+    	<title>Change pass code</title>
+		
+			<meta charset="utf-8">
+    		<meta http-equiv="x-ua-compatible" content="ie=edge">
+    		<meta name="viewport" content="width=device-width, initial-scale=1">
+    	
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
+  			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+					
+  			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+			<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+  		
+    	
+	</head>
+ 
+	<body>
+    	<div class="container my-5">
+        	<h5 style="color: #006400; font-size=12px; font-weight:bold;">Change Password</h5>
+        	<div class="card">
+        	   	<div class="card-body">
+                	<form action="#" th:action="@{/pbb/users/changeMyPass}" method="post">
+                		
+                		<div class="form-group  col-md-8">
+                               	<label style="color: #880000; font-size: 12px; font-weight: bold; background-color: #FFFFCC;">Note: The password should be at least 6 characters long...</label> 
+                               	
+                        </div>
+                       	<div class="form-group col-sm-4">
+                        	<label for="username">Username</label> 
+                          	<input type="text" th:value="${user.username}" name="username" placeholder="username" disabled/>
+                        </div>
+                        
+                        <div class="form-group col-sm-4">
+                        	<label for="passFrag1">New Password</label> 
+                          	<input type="text" name="passFrag1" required/>
+                        </div>
+                               
+                        <div class="form-group col-sm-4">
+                        	<label for="passFrag2">Confirm Password</label> 
+                          	<input type="text" name="passFrag2" required/>
+                        </div>       
+                                               
+                        <div class="form-group col-md-8">
+                           	<input type="submit" class="btn btn-primary btn-sm" value=" Submit ">
+                           	
+                           	<a href="/pbb/MainMenu" class="btn btn-secondary btn-sm">
+                			<i class="fas fa-back ml-2"> Cancel </i></a>
+                         </div>
+ 
+                        <input type="hidden" name="username" th:value="${user.username}">
+     
+                        
+                    </form>
+                    
+                </div>
+            </div>
+           <div style="color:#000088; font-size:10px;font-weight: bold;" class="card-footer text-muted">TRC Corp</div>
+        </div>
+    
+	</body>
+ 
+</html>

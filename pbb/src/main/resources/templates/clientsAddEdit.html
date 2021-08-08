@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+ 
+	<head>
+    	<title>Add/Modify Clients</title>
+		
+			<meta charset="utf-8">
+    		<meta http-equiv="x-ua-compatible" content="ie=edge">
+    		<meta name="viewport" content="width=device-width, initial-scale=1">
+    	
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
+  			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  			<script type="text/javascript" th:src="@{/js/citiesDropDown.js}" src="../static/js/citiesDropDown.js"></script>
+					
+  			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+			<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+  			<link th:href="@{/css/style.css}" rel="stylesheet">
+  			  		
+    	
+	</head>
+ 
+	<body>
+    	<div class="container">
+        	<div style="color: #006400; font-size=12px; font-weight:bold;"> Add/Modify Clients</div>
+        	<a href="/pbb/clients/list" class="btn btn-success btn-sm"><i class="fas fa-back ml-2">Back</i></a>
+        	<div class="card">
+				<div class="card-body bg-form">
+                	<form action="#" th:action="@{/pbb/clients/createClient}" th:object="${client}" method="post">
+                		
+                		<div class="form-group">
+                       		<label>ID: </label> 
+                       		<input type="text" th:field="*{clientid}" size="3" readOnly disabled/>
+                       	</div>
+                		
+                    	<div class="form-group">
+                       		<label for="cname">Owner: <sup style="color:#800000;font-size:14px;">*</sup></label> 
+                       		<input type="text" th:field="*{cname}" id="cname" placeholder="Name" required maxlength="50" size="50"/>
+                       	
+                       		<label for="email">Email: <sup style="color:#800000;font-size:14px;">*</sup></label> 
+                       		<input type="text" th:field="*{email}" id="email" placeholder="Email" required maxlength="25" size="50"/>
+                       	</div>
+                        
+                       	<div class="form-group">
+                       		<label for="phone">Contact Phone: <sup style="color:#800000;font-size:14px;">*</sup></label> 
+                       		<input type="text" th:field="*{phone}" id="phone" placeholder="Phone" required maxlength="50" size="50"/>
+                       
+                       		<label for="subscriptionNum">Subscription Number: <sup style="color:#800000;font-size:14px;">*</sup></label> 
+                       		<input type="text" th:field="*{subscriptionNum}" id="subscriptionNum" placeholder="Subscription Number" required maxlength="12" size="50"/>
+                       	</div>
+                        
+                       	<div class="form-group">
+                       		<label for="businessName">Business Name: <sup style="color:#800000;font-size:14px;">*</sup></label> 
+                       		<input type="text" th:field="*{businessName}" id="businessName" placeholder="Business Name" required maxlength="50" size="50"/>
+                       
+                       		<label for="url">Web Site: </label> 
+                       		<input type="text" th:field="*{url}" id="url" placeholder="url" maxlength="50" size="50"/>
+                       	</div>
+                        
+                       	<hr>
+                        
+                       	<div class="form-group">
+                       		<label for="logo">Logo File: </label> 
+                       		<input type="text" th:field="*{logo}" id="logo" placeholder="Logo" maxlength="50" size="50"/>
+                       		
+                       		<div th:if="${localClientId}==null">
+                       			<label>[No logo to show]</label>
+                       		</div>	
+                       		<div th:unless="${localClientId}==null">
+                       			<img class="img-icon-large"  th:src="@{${'/pbb/clients/'+ localClientId +'/logo/'+ localLogo}}" alt=""/>
+                       		</div>		
+                       	</div> 
+                        
+                       	<hr>
+                                               	                   
+                        <div class="form-group">
+                    		<label for="country">Country: <sup style="color:#800000;font-size:14px;">*</sup></label>
+                         	<select th:field="*{country}" id="country" required>
+                            	<option th:value="*{country}" th:text="*{country}"></option>
+                            	<option th:value="US" th:text="US"></option>
+                           	</select>
+                      	
+      						<label for="state">State: <sup style="color:#800000;font-size:14px;">*</sup></label>
+      						<select th:field="*{state}" id="state" required>
+      							<option th:value="*{state}" th:text="*{state}"></option>
+      								
+    							<option th:each="state : ${states}" th:value="${state.state}" th:text="${state.state}"></option>
+    						</select>
+					
+                    		<label for="city">City: <sup style="color:#800000;font-size:14px;">*</sup></label>
+                         	<select th:field="*{city}" id="city" required>
+                            	<option th:value="*{city}" th:text="*{city}"></option>
+                           	</select>
+                      	</div>
+                       
+                       	<div class="form-group">
+                        	<label for="street">Street Address: <sup style="color:#800000;font-size:14px;">*</sup></label> 
+                        	<input type="text" th:field="*{address}" id="address" placeholder="Street Address" required maxlength="20" size="50"/>
+                    
+                        	<label for="zip">Zip Code: <sup style="color:#800000;font-size:14px;">*</sup></label> 
+                        	<input type="text" th:field="*{zip}" id="zip" placeholder="Zip Code" required maxlength="8"/>
+                        </div>
+                       
+                       	<hr>
+                
+                       
+                        <div class="form-group">
+                    		<label for="country">Web Status : </label>
+                         	<select th:field="*{status}" id="status">
+                            	<option th:value="*{status}" th:text="*{status}"></option>
+                            	<option th:value="Due" th:text="Due"></option>
+                            	<option th:value="Public" th:text="Public"></option>
+                           	</select>
+                      
+                    		<label for="country">Active : </label>
+                         	<select th:field="*{active}" id="active">
+                            	<option th:value="*{active}" th:text="*{active}"></option>
+                            	<option th:value="Yes" th:text="Yes"></option>
+                            	<option th:value="No" th:text="No"></option>
+                           	</select>
+                      	</div>
+                        
+                        <div class="form-group">
+                        	<input type="submit" class="btn btn-primary btn-sm" value=" Submit "/>
+                           	<a href="/pbb/clients/list" class="btn btn-secondary btn-sm">
+                				<i class="fas fa-back ml-2"> Cancel </i></a>
+                        </div>
+ 
+                        <input type="hidden" id="id" th:field="*{clientid}">
+     					<input type="hidden" id="pass" th:field="*{pass}">
+                        
+                    </form>
+                    
+                </div>
+            </div>
+            
+            <div class="row"><hr></div>
+            
+            <div class="row">
+            
+            	<div class="col">
+            
+	            	<div class="card">
+	            		<div style="color: #006400; font-size=12px; font-weight:bold;"> Products</div>
+	            	            	
+		            	<div th:if="${localClientId}==null">
+		                	<br><label>[No products to show]</label>
+		                </div>	
+		                <div th:unless="${localClientId}==null">
+		                	<div th:each="product,iStat : ${products}"> 
+		      				   					
+		    					<div class="col-sm" style="padding:50px;border:1px solid #000088;">
+		    					
+		    						<label style="color:#006400;font-size:15px" th:text="${product.condition}"></label><br>
+		  							<a target="_blank" href="#">
+		    							<img class="img-icon-large" th:src="@{${'/pbb/clients/'+ product.storeId +'/images/'+ product.fileName}}">
+		  							</a>
+		  								
+		  							<div class="row">
+		  							
+		  								<div class="desc">
+		  									<label style="color: #880000;" th:text="${product.product}"></label><br>
+		  								</div>
+		  									
+		  							</div>	
+		  									
+		  							<div class="row">
+		  								
+		  								<div class="column">
+		  										
+		  									<div class="desc">
+		  										<b>Price: $</b><label style="color: #006400;" th:text="${product.price}"></label><br>
+		  										<b>Status : </b>
+			      								<label style="color: #006400;" th:text="${product.status}"></label><br>	
+			      							</div>
+			      								
+		                				</div>
+		  									  									
+		  								<div class="column">
+		  									
+		  									<div class="desc">
+		  										<b>Delivery : </b>
+		  										<label style="color: #006400;" th:text="${product.delivery}"></label><br>
+		  									</div>
+		  									
+		  									<div class="desc">
+		  										<b>Category : </b>
+		  										<label style="color: #006400;" th:text="${product.category}"></label><br>
+		  									</div>
+		  									
+		  								</div>
+		  									
+		  							</div>	
+		  						</div>
+		  					</div>	
+		                </div>
+		            </div>
+		        </div>         	
+            
+            	            
+            	<div class="col">
+            	
+            		<div class="card">
+	            		<div style="color: #006400; font-size=12px; font-weight:bold;"> Payments</div>
+	            	            	
+		            	<div th:if="${localClientId}==null">
+		                	<br><label>[No payments to show]</label>
+		                </div>	
+		                <div th:unless="${localClientId}==null">
+		                	<div th:each="payment,iStat : ${payments}"> 
+		                		<table class="table-simple">
+		                			<tr>
+		                				<th>ID</th>
+		                				<th>Date</th>
+		                				<th>Type</th>
+		                				<th>Amount</th>
+		                				<th>Outcome</th>
+		                			</tr>
+		                			<tr>
+		                				<td th:text="${payment.paymentid}"></td>
+		                       			<td th:text="${payment.dateCreation}"></td>
+		                       			<td th:text="${payment.type}" nowrap></td>
+		                       			<td th:text="${payment.amount}"></td>
+		                        		<td th:text="${payment.outcome}"></td>	
+		                			</tr>
+		                		</table>
+		                	</div>
+		                </div>
+            	
+            		</div>
+            
+            	</div>
+            	
+            	<div class="col-2">
+            		<div class="card">
+            			<div style="color: #006400; font-size=12px; font-weight:bold;">Subscription Info</div>
+	            		<div th:if="${localClientId}==null">
+			                <br><label>[No subscription info to show]</label>
+			            </div>
+			            <div th:unless="${localClientId}==null">
+			            	<table class="table-simple">
+			            		<tr>
+			            			<th>Days left: </th>
+			            			<td th:text="${daysLeftSubscription}"></td>
+			            		</tr>
+			            	</table>	
+			            </div>
+			       </div>
+		       </div>
+            </div>
+            
+           	<div style="color:#000088; font-size:10px;font-weight: bold;" class="card-footer text-muted">TRC Corp</div>
+         </div>   
+	</body>
+ 
+</html>

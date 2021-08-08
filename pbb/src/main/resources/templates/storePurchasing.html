@@ -1,0 +1,138 @@
+<!doctype html>
+<html  xmlns:th="http://www.thymeleaf.org">
+   <head>
+      <!-- Required meta tags -->
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      
+      <title>Purchasing</title>
+      
+      <!-- Favicon Icon -->
+      <link rel="icon" type="image/png" th:href="@{/img/favicon.png}" th:src="@{/img/favicon.png}">
+      <!-- Bootstrap core CSS-->
+      <link th:href="@{/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+           
+      
+      <!-- Font Awesome-->
+      <link th:href="@{/vendor/fontawesome/css/all.min.css}" rel="stylesheet">
+      
+      <!-- Font Awesome-->
+      <link th:href="@{/vendor/icofont/icofont.min.css}" rel="stylesheet">
+      
+      <!-- Select2 CSS-->
+      <link th:href="@{/vendor/select2/css/select2.min.css}" rel="stylesheet">
+      <link th:href="@{/css/style.css}" rel="stylesheet">
+      
+      <!-- Custom styles for this template-->
+      <link th:href="@{/css/osahan.css}" rel="stylesheet">
+      
+      <!-- Owl Carousel -->
+      <link th:href="@{/vendor/owl-carousel/owl.carousel.css}" rel="stylesheet">
+      <link th:href="@{/vendor/owl-carousel/owl.theme.css}" rel="stylesheet">
+   </head>
+   
+   <!-- Navigation -->
+  
+  		<span th:include="topMenu"> Top Menu </span>
+  
+   <!-- Main Section -->
+   
+     
+   <body>
+      
+    	<section class="offer-dedicated-body pt-2 pb-2 mt-4 mb-4">
+    		<div class="container">
+        		
+        		<div class="row">
+    				
+        			<div class="col">
+            			<div class="stickyObject-button">	
+                			<ul style="list-style: none;">
+								<li><a class="previous-button round-button" th:href="${'/pbb/Details/'+ {product.storeId}}">Back</a></li>
+								<li>&nbsp;</li>
+							</ul>
+                	    </div>
+                	    
+                	    <div class="row">
+                	    
+                	    	<label class="head1" th:text="${store.businessName}"></label>
+                	    	
+                	   </div> 	
+                	    
+        				<img class="img-product-big" th:src="@{${'/pbb/clients/'+ product.storeId +'/images/'+ product.fileName}}" alt="Coming Soon">
+  						
+  						<div class="backFrame">	
+  							<label class="simpleLabelBlue" style="white-space: nowrap;" th:text="${product.product}"></label><br>
+  										
+      						<label class="simpleLabelBlue" th:text="'$ '+ ${product.price}"></label><br>
+      						<!--  <label th:text="${product.status}"></label><br> -->
+      							
+      						<label class="simpleLabelBlue" th:text="${product.condition}"></label><br>
+      						<label class="simpleLabelBlue" th:text="${product.delivery}"></label><br>
+      					</div>	
+  					</div>			
+					<div class="col">
+								
+						<form th:action="@{/pbb/CreateRequest}" th:object="${request}" method="post">
+										
+                        	<div class="form-group">
+                           		<label class="simpleLabelBlue" for="cname">Your Name</label>
+                           		<input type="text" class="form-control" id="cname" th:field="*{cname}" placeholder="Enter your name" maxlength="50" required="required" />
+                           	</div>	
+                        	
+                        	<div class="form-group">	
+                           		<label class="simpleLabelBlue" for="email">Your Email Address</label>
+                            		
+                           		<span class="input-group-addon">
+                           			<span class="glyphicon glyphicon-envelope"></span>
+                           		</span>
+                           		<input type="email" class="form-control" id="email" th:field="*{email}" placeholder="Enter email" maxlength="70" required="required" />
+                            </div>
+                            
+                            <div class="form-group">    		
+                           		<label class="simpleLabelBlue" for="name">Message/Instructions:</label>
+                        		<textarea id="instructions" th:field="*{instructions}" class="form-control" rows="4" cols="50" maxlength="500" required="required"></textarea>
+                            </div>
+                            
+                            <div class="form-group"> 				
+                        		<br><button type="submit" class="btn btn-info pull-left" id="btnContactUs">Send Request</button>
+                           	</div>
+                        						
+                        	              						
+                			<input type="hidden" name="id" th:value="${product.storeId}">
+                			<input type="hidden" name="product" th:value="${product.product}">
+                			<input type="hidden" name="storeId" th:value="${product.storeId}">
+            					
+            			</form>	
+            					
+        			</div>
+        					
+    			</div>
+					
+        	 </div>     
+		</section>
+    
+    <!-- Pre footer -->
+    <span th:include="preFooter">Pre Footer row</span>  
+      		  
+      <!-- Footer -->
+    <div class="banner-overlay"><br></div>
+    <span th:include="footer">Footer Line(s)</span>
+          
+      <!-- jQuery -->
+    <script th:src="@{/vendor/jquery/jquery-3.3.1.slim.min.js}"></script>
+      
+      <!-- Bootstrap core JavaScript-->
+    <script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+      
+      <!-- Select2 JavaScript-->
+    <script th:src="@{/vendor/select2/js/select2.min.js}"></script>
+      
+    <!-- Owl Carousel -->
+      <script th:src="@{/vendor/owl-carousel/owl.carousel.js}"></script>
+      
+      <!-- Custom scripts for all pages-->
+      <script th:src="@{/js/custom.js}"></script>
+      
+   </body>
+</html>

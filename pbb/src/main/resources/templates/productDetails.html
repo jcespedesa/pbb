@@ -1,0 +1,107 @@
+<!doctype html>
+<html  xmlns:th="http://www.thymeleaf.org">
+   <head>
+      <!-- Required meta tags -->
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <meta name="description" content="Askbootstrap">
+      <meta name="author" content="Askbootstrap">
+      <title>Product Details</title>
+      <!-- Favicon Icon -->
+      <link rel="icon" type="image/png" th:href="@{/img/favicon.png}" th:src="@{/img/favicon.png}">
+      <!-- Bootstrap core CSS-->
+      <link th:href="@{/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+           
+      
+      <!-- Font Awesome-->
+      <link th:href="@{/vendor/fontawesome/css/all.min.css}" rel="stylesheet">
+      
+      <!-- Font Awesome-->
+      <link th:href="@{/vendor/icofont/icofont.min.css}" rel="stylesheet">
+      
+      <!-- Select2 CSS-->
+      <link th:href="@{/vendor/select2/css/select2.min.css}" rel="stylesheet">
+      
+      <!-- Custom styles for this template-->
+      <link th:href="@{/css/osahan.css}" rel="stylesheet">
+      
+      <!-- Owl Carousel -->
+      <link th:href="@{/vendor/owl-carousel/owl.carousel.css}" rel="stylesheet">
+      <link th:href="@{/vendor/owl-carousel/owl.theme.css}" rel="stylesheet">
+   </head>
+   
+   <!-- Navigation -->
+  
+  		<span th:include="topMenu"> Top Menu </span>
+  
+   <!-- Main Section -->
+   
+     
+   <body>
+      
+    <section class="offer-dedicated-body pt-2 pb-2 mt-4 mb-4">
+    	<div class="container">
+            <div class="row">
+               <div class="col-md-8">
+                  <div class="offer-dedicated-body-left">
+                     <div class="tab-content" id="pills-tabContent">
+                        <div class="tab-pane fade show active" id="pills-order-online" role="tabpanel" aria-labelledby="pills-order-online-tab">
+         
+      						<div id="#menu" class="bg-white rounded shadow-sm p-4 mb-4 explore-outlets">
+                            	<h5 class="mb-4">[Store Name]</h5>
+                              
+                              	<h6 class="mb-3">[Product Name]<span class="badge badge-success"><i class="icofont-tags"></i>$[Price]</span></h6>
+                              	
+                              	<div class="col-md-4 col-sm-6 mb-4">
+                                 <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
+                                    <div class="list-card-image">
+                                       <div class="star position-absolute"><span class="badge badge-success"><i class="icofont-star"></i> 3.1 (300+)</span></div>
+                                       <div class="favourite-heart text-danger position-absolute"><a href="#"><i class="icofont-heart"></i></a></div>
+                                       <div class="member-plan position-absolute"><span class="badge badge-dark">Promoted</span></div>
+                                       <a href="#">
+                                       <img th:src="@{/images/vendor/mixers/image004.jpg}" class="img-fluid item-img">
+                                       </a>
+                                    </div>
+                                    <div class="p-3 position-relative">
+                                       <div class="list-card-body">
+                                          <h6 class="mb-1"><a href="#" class="text-black">[Product Description]</a></h6>
+                                          <p class="text-gray mb-2">[Notes/Comments]</p>
+                                          <a class="btn btn-outline-secondary btn-sm" href="#">Buy it</a>
+                                             
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                          
+                        </div>
+                      </div>
+                   </div>
+                </div>
+             </div>
+             </div>
+             </div>                 
+	</section>
+    
+    <!-- Pre footer -->
+    <span th:include="preFooter">Pre Footer row</span>    
+      <!-- Footer -->
+    <div class="banner-overlay"><br></div>
+    <span th:include="footer">Footer Line(s)</span>
+      
+      <!-- jQuery -->
+    <script th:src="@{/vendor/jquery/jquery-3.3.1.slim.min.js}"></script>
+      
+      <!-- Bootstrap core JavaScript-->
+    <script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+      
+      <!-- Select2 JavaScript-->
+    <script th:src="@{/vendor/select2/js/select2.min.js}"></script>
+      
+    <!-- Owl Carousel -->
+      <script th:src="@{/vendor/owl-carousel/owl.carousel.js}"></script>
+      
+      <!-- Custom scripts for all pages-->
+      <script th:src="@{/js/custom.js}"></script>
+      
+   </body>
+</html>

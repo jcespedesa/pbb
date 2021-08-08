@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+ 
+	<head>
+    	<title>Modify Store</title>
+		
+			<meta charset="utf-8">
+    		<meta http-equiv="x-ua-compatible" content="ie=edge">
+    		<meta name="viewport" content="width=device-width, initial-scale=1">
+    	
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
+  			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  			<script type="text/javascript" th:src="@{/js/citiesDropDown.js}" src="../static/js/citiesDropDown.js"></script>
+					
+  			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+			<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+  			<link th:href="@{/css/style.css}" rel="stylesheet">
+    	
+	</head>
+ 
+	<body>
+    	<div class="container my-5">
+        	<div style="color: #006400; font-size=12px; font-weight:bold;">Store Profile Modification</div>
+        	
+        	<a th:href="@{/pbb/ClientsMenu/{email}(email=${store.email})}" class="btn btn-success btn-sm"><i class="fas fa-back ml-2">Back</i></a>
+        	
+        	<div th:if="${message}!=null">
+  				<label class="alert alert-info" th:text="${message}">message</label>
+  			</div>			
+        		
+        	<div class="card">
+				<div class="card-body bg-form">
+                	<form action="#" th:action="@{/pbb/clients/UpdateStore}" method="post">
+                		
+                		<div class="form-group">
+                       		<label for="id">Client ID: </label> 
+                       		<input type="text" th:field="*{store.clientid}" size="4" disabled/>
+                       	</div>
+                		
+                		<div class="form-group">
+                       		<label for="cname">Business Name: <sup style="color:#800000;font-size:14px;">*</sup></label> 
+                       		<input type="text" th:field="*{store.businessName}" id="businessName" placeholder="Business Name" required maxlength="50" size="50"/>
+                       	</div>
+                		                		
+                    	<div class="form-group">
+                       		<label for="cname">Owner: <sup style="color:#800000;font-size:14px;">*</sup></label> 
+                       		<input type="text" th:field="*{store.cname}" id="cname" placeholder="Name" required maxlength="50" size="50"/>
+                       	</div>
+                        
+                       	<div class="form-group">
+                       		<label for="email">Email: </label> 
+                       		<input type="text" th:field="*{store.email}" id="email" placeholder="Email" size="50" disabled/>
+                       	</div>
+                        
+                       	<div class="form-group">
+                       		<label for="phone">Contact Phone: <sup style="color:#800000;font-size:14px;">*</sup></label> 
+                       		<input type="text" th:field="*{store.phone}" id="phone" placeholder="Phone" required maxlength="50" size="50"/>
+                       	</div>
+                        
+                       	                   
+                       	<div class="form-group">
+                       		<label for="url">Web Site: </label> 
+                       		<input type="text" th:field="*{store.url}" id="url" placeholder="url" maxlength="50" size="50"/>
+                       	</div>
+                        
+                       	<hr>
+                                               	                   
+                        <div class="form-group">
+                    		<label for="country">Country: <sup style="color:#800000;font-size:14px;">*</sup></label>
+                         	<select th:field="*{store.country}" id="country" required>
+                         		<option value="USA">USA</option>
+                            	<option th:value="*{store.country}" th:text="*{store.country}"></option>
+                            	
+                           	</select>
+                      	</div>
+                        
+                        <div class="form-group">
+      						<label for="state">State: <sup style="color:#800000;font-size:14px;">*</sup></label>
+      						<select th:field="*{store.state}" id="state" required>
+      							<option th:value="*{store.state}" th:text="*{store.state}"></option>
+      								
+    							<option th:each="state : ${states}" th:value="${state.state}" th:text="${state.state}"></option>
+    						</select>
+						</div>
+                                                   
+                    	<div class="form-group">
+                    		<label for="city">City: <sup style="color:#800000;font-size:14px;">*</sup></label>
+                         	<select th:field="*{store.city}" id="city" required>
+                            	<option th:value="*{store.city}" th:text="*{store.city}"></option>
+                           	</select>
+                      	</div>
+                       
+                       	<div class="form-group">
+                        	<label for="street">Street Address: <sup style="color:#800000;font-size:14px;">*</sup></label> 
+                        	<input type="text" th:field="*{store.address}" id="address" placeholder="Street Address" required maxlength="50" size="50"/>
+                        </div>
+                        
+                        <div class="form-group">
+                        	<label for="zip">Zip Code: <sup style="color:#800000;font-size:14px;">*</sup></label> 
+                        	<input type="text" th:field="*{store.zip}" id="zip" placeholder="Zip Code" required maxlength="8"/>
+                        </div>
+                       
+                       	<hr>
+                       	
+                       	<!--  
+                       	<div class="form-group">
+      						<label for="categoryNum">Product Category: <sup style="color:#800000;font-size:14px;">*</sup></label>
+      						<select th:field="*{store.categoryNum}" id="categoryNum" required>
+      							<option th:value="*{store.categoryNum}" th:text="*{store.categoryName}"></option>
+      								
+    							<option th:each="category : ${categories}" th:value="${category.categoryNum}" th:text="${category.categoryName}"></option>
+    						</select>
+						</div>
+                       
+                       	<div class="form-group">
+      						<label for="state">Business Description:</label><br>
+      						<textarea id="bizDescription" th:field="*{store.bizDescription}" rows="5" cols="80" required></textarea>
+					   	</div>
+                       
+                       -->
+                        
+                        <div class="form-group">
+                        	<input type="submit" class="btn btn-primary btn-sm" value=" Submit "/>
+                           	
+                        </div>
+ 
+                        <input type="hidden" name="id" th:value="${store.clientid}">
+     					
+                    </form>
+                    
+                </div>
+            </div>
+           	<div style="color:#000088; font-size:10px;font-weight: bold;" class="card-footer text-muted">TRC Corp</div>
+         </div>   
+	</body>
+ 
+</html>
